@@ -1,12 +1,12 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 
 const Footer = () => {
   return (
     <div className="footer">
-        <div className="footer-text">
+        <AniLink paintDrip to="/barrios" className="footer-text">
             Click to start
-        </div>
+        </AniLink>
     </div>
   )
 }

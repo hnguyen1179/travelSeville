@@ -102,9 +102,8 @@ header {
     animation: frameSlideLeft 1.0s 1;
     animation-delay: 2.5s;
     animation-fill-mode: forwards;
-}
 
-.intro-page-text {
+    .intro-page-text {
     display: flex;
     position: relative;
     top: 50%;
@@ -112,59 +111,62 @@ header {
     transform: translate(-50%, -50%);
     flex-direction: column;
     width: fit-content;
-    .intro-page-text_title {
-        margin: 0;
-        padding: 0;
-        height: fit-content;
-        margin-bottom: -10px;
-        list-style: none;
-        font-family: $titleFont;
-        font-size: 4rem;
-    }
+        .intro-page-text_title {
+            margin: 0;
+            padding: 0;
+            height: fit-content;
+            margin-bottom: -10px;
+            list-style: none;
+            font-family: $titleFont;
+            font-size: 4rem;
+            li {
+                margin: 0 10px;
+                display: inline-block;
+                font-weight: 700;
+                letter-spacing: 1px;
+            }
+        }
 
-    .intro-page-text_title li {
-        margin: 0 10px;
-        display: inline-block;
-        font-weight: 700;
-        letter-spacing: 1px;
-    }
+        .intro-page-text_title::after {
+            content: '';
+            margin-top: -10px;
+            display: block;
+            background: $red;
+            height: 13px;
+            width: 100%;
+        }
 
-    .intro-page-text_title::after {
-        content: '';
-        margin-top: -10px;
-        display: block;
-        background: $red;
-        height: 13px;
-        width: 100%;
-    }
-
-    .intro-page-text_author {
-        font-family: $bodyFont;
-        font-size: 1.25rem;
-        font-weight: 100;
-        text-transform: uppercase;
-        margin-top: 12px;
-        margin-left: auto;
-        margin-right: 8px;
-        #duke-nguyen {
-            text-shadow: 1px 0 $black;
+        .intro-page-text_author {
+            font-family: $bodyFont;
+            font-size: 1.25rem;
+            font-weight: 100;
+            text-transform: uppercase;
+            margin-top: 12px;
+            margin-left: auto;
+            margin-right: 8px;
+            #duke-nguyen {
+                text-shadow: 1px 0 $black;
+            }
         }
     }
-}
 
-@keyframes frameSlideLeft {
-    0% {right: 0px;}
-    100% {right: 100%;}
+    @keyframes frameSlideLeft {
+        0% {right: 0px;}
+        100% {right: 100%;}
+    }
 }
-
 
 // Banner
+
+#base {
+    height: 100vh;
+}
 .banner {
     display: flex;
     align-items: center;
     background-color: $white;
     position: relative;
-    height: 90vh;
+    height: 95vh;
     .row {
         display: flex;
         justify-content: space-evenly;
@@ -304,7 +306,7 @@ header {
 
     .footer-text:hover {
         cursor: pointer;
-        font-weight: 700;
+        // font-weight: 700;
         color: $black;
         transition: 250ms;
     }
