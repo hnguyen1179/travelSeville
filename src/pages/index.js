@@ -1,10 +1,9 @@
 import React from "react"
-import '../styles/styles.scss'
+import '../styles/index.scss'
 
 // Component imports
-import Header from '../components/header'
-import Footer from '../components/footer'
-import Banner from '../components/banner'
+import Footer from '../components/index/footer'
+import Banner from '../components/index/banner'
 
 const IndexPage = () => {
   return (
