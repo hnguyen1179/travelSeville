@@ -1,0 +1,27 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+#base {
+    height: 100vh;
+    width: 100vw;
+}
+
+// Fonts
+@font-face {
+    font-family: 'Romana';
+    src: url('../fonts/RomanaEF-Medium.otf') format('opentype')
+}
+
+@font-face {
+    font-family: 'Apercu';
+    src: url('../fonts/Apercu\ Pro\ Regular.otf') format('opentype')
+}

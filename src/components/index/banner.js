@@ -7,26 +7,20 @@ const Banner = () => {
         query {
             hotelImage: file(relativePath: { eq: "hotel.jpg" }) {
                 childImageSharp {
-                    fluid(maxWidth: 600, quality: 100) {
+                    fluid(maxWidth: 600, quality: 90) {
                         ...GatsbyImageSharpFluid
                     }
                 }
             }
             neighborhoodImage: file(relativePath: { eq: "neighborhood.jpg" }) {
                 childImageSharp {
-                    fluid(maxWidth: 600, quality: 100) {
+                    fluid(maxWidth: 600, quality: 90) {
                         ...GatsbyImageSharpFluid
                     }
                 }
             }
         }
     `)
-
-    document.addEventListener('DOMContentLoaded', function () {
-      document.getElementsByClassName('left-image').setAttribute('draggable', false);
-      document.getElementsByClassName('right-image').setAttribute('draggable', false);
-      console.log("hit this");
-    })
 
     return (
       <div className="banner">

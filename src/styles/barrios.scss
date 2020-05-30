@@ -1,0 +1,77 @@
+// Colors 
+$white: #fff;
+$black: #000;
+$red: #aa151b;
+$yellow: #f1bf00;
+
+$titleFont: 'Romana';
+$bodyFont: 'Apercu';
+
+.red-bar {
+    content: "";
+    z-index: -1;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $red;
+    height: 250px;
+    width: 100vw;
+}
+
+.barrios-content {
+    display: flex;
+
+    .barrios-images {
+        display: flex;
+        flex-wrap: wrap;
+        opacity: 1;
+        width: 600px;
+
+        .centro-image {
+            width: 300px;
+        }
+        .arenal-image {
+            width: 300px;
+        }
+        .santa-cruz-image {
+            width: 300px;
+        }
+        .macarena-image {
+            width: 300px;
+        }
+    }
+    
+    .barrios-text {
+        // display: flex;
+        // flex-direction: column;
+        width: 230px;
+        // margin-left: auto;
+        // margin-right: 20%;
+        position: relative;
+        animation: fadeUp2 1s ease-out 1;
+        animation-delay: 0.3s;
+        animation-fill-mode: forwards;
+        opacity: 0;
+        .barrios-text_title {
+            margin-top: 185px;
+            color: $white;
+            font-family: $titleFont;
+            font-size: 4rem;
+        }
+        .barrios-text_body {
+            font-family: $bodyFont;
+            font-size: 1.25rem;
+        }
+    }
+    
+    @keyframes fadeUp2 {
+        0% {
+            bottom: -50px;
+        }
+        100% {
+            bottom: 0px;
+            opacity: 1;
+        }
+    }
+}
