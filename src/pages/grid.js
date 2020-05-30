@@ -3,12 +3,12 @@ import '../styles/grid.scss'
 
 const GridDemo = () => {
     return (
-        <div>
-            <div className="boxes box1"></div>
-            <div className="boxes box2"></div>
-            <div className="boxes box3"></div>
-            <div className="boxes box4"></div>
-        </div>
+      <div className="boxes">
+          <div className="box">Box 1</div>
+          <div className="box">Box 2</div>
+          <div className="box">Box 3</div>
+          <div className="box">Box 4</div>
+      </div>
     )
 }
 
