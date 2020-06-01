@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `travel-Seville`,
+    title: `Seville, Spain`,
     description: `Explore Seville, Spain in a day.`,
     author: `Duke`,
   },

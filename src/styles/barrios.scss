@@ -7,71 +7,187 @@ $yellow: #f1bf00;
 $titleFont: 'Romana';
 $bodyFont: 'Apercu';
 
-.red-bar {
-    content: "";
-    z-index: -1;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: $red;
-    height: 250px;
-    width: 100vw;
+#barrios {
+    height: 100vh; 
+
+    .red-bar {
+        height: 250px;
+        width: 100vw;
+    }
+    
+    .content {
+        display: flex;
+        justify-content: center;
+        
+        .images {
+            margin-top: 3%;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 5px;
+    
+            .image {
+                border: 5px solid rgba(0, 0, 0, 0);
+                opacity: 0;
+            }
+    
+            .image:hover {
+                transition: 200ms;
+                border: 5px solid $yellow;
+                cursor: pointer;
+            }
+    
+            .image-grid-1 {
+                display: grid;
+                grid-auto-rows: min-content;
+                grid-gap: 5px;
+                .centro-image {
+                    height: fit-content;
+                    width: 350px;
+                    animation: fadeFromBotLeft 1.2s ease-in-out 1;
+                    animation-delay: 0.01s;
+                    animation-fill-mode: forwards;
+                }
+                .santa-cruz-image {
+                    height: fit-content;
+                    width: 350px;
+                    animation: fadeFromTopLeft 1.2s ease-in-out 1;
+                    animation-delay: 0.01s;
+                    animation-fill-mode: forwards;
+                }
+            }
+    
+            .image-grid-2 {
+                display: grid;
+                grid-auto-rows: min-content;
+                grid-gap: 5px;
+                .arenal-image {
+                    vertical-align: top;
+                    height: fit-content;
+                    width: 100%;
+                    animation: fadeFromTopRight 1.2s ease-in-out 1;
+                    animation-delay: 0.01s;
+                    animation-fill-mode: forwards;
+                }
+                .macarena-image {
+                    height: fit-content;
+                    width: 350px;
+                    animation: fadeFromBotRight 1.2s ease-in-out 1;
+                    animation-delay: 0.01s;
+                    animation-fill-mode: forwards;
+                }
+            }
+        }
+        
+        .text {
+            margin-top: 11.25%;
+            width: 230px;
+            position: relative;
+
+            animation: fadeUp2 1.3s ease-out 1;
+            animation-delay: 0.01s;
+            animation-fill-mode: forwards;
+            opacity: 0;
+            .text_title {
+                color: $white;
+                font-family: $titleFont;
+                font-size: 4rem;
+            }
+            .text_body {
+                font-family: $bodyFont;
+                font-size: 1.25rem;
+            }
+        }
+    }
+
+    .next-page {
+        position: absolute;
+        top: 90%; 
+        left: 90%; 
+        font-family: $bodyFont;
+        font-size: 1.25rem;
+        color: rgba(0, 0, 0, 0.5);
+        font-weight: 200;
+        position:relative;
+        text-decoration:none;
+        display:inline-block;
+        transition: 200ms;
+    }
+
+    .next-page:hover {
+        cursor: pointer;
+        // font-weight: 700;
+        color: $black;
+        transition: 250ms;
+    }
+
+    .next-page::after {
+        display: block;
+        content: "";
+        border-bottom: solid 3px $red;  
+        transform: scaleX(0);  
+        transition: transform 250ms ease-in-out;
+        transform-origin: 0%;
+    }
+
+    .next-page:hover::after {
+        transform: scaleX(1);
+    }
+
 }
 
-.barrios-content {
-    display: flex;
-
-    .barrios-images {
-        display: flex;
-        flex-wrap: wrap;
+// Keyframes
+@keyframes fadeUp2 {
+    0% {
+        bottom: -50px;
+    }
+    100% {
+        bottom: 0px;
         opacity: 1;
-        width: 600px;
+    }
+}
 
-        .centro-image {
-            width: 300px;
-        }
-        .arenal-image {
-            width: 300px;
-        }
-        .santa-cruz-image {
-            width: 300px;
-        }
-        .macarena-image {
-            width: 300px;
-        }
+@keyframes fadeFromTopLeft {
+    0% {
+        top: -50px;
+        left: -50px;
     }
-    
-    .barrios-text {
-        // display: flex;
-        // flex-direction: column;
-        width: 230px;
-        // margin-left: auto;
-        // margin-right: 20%;
-        position: relative;
-        animation: fadeUp2 1s ease-out 1;
-        animation-delay: 0.3s;
-        animation-fill-mode: forwards;
-        opacity: 0;
-        .barrios-text_title {
-            margin-top: 185px;
-            color: $white;
-            font-family: $titleFont;
-            font-size: 4rem;
-        }
-        .barrios-text_body {
-            font-family: $bodyFont;
-            font-size: 1.25rem;
-        }
+    100% {
+        top: 0px;
+        left: 0px;
+        opacity: 1;
     }
-    
-    @keyframes fadeUp2 {
-        0% {
-            bottom: -50px;
-        }
-        100% {
-            bottom: 0px;
-            opacity: 1;
-        }
+}
+@keyframes fadeFromTopRight {
+    0% {
+        top: -50px;
+        right: -50px;
+    }
+    100% {
+        top: 0px;
+        right: 0px;
+        opacity: 1;
+    }
+}
+@keyframes fadeFromBotLeft {
+    0% {
+        bottom: -50px;
+        left: -50px;
+    }
+    100% {
+        bottom: 0px;
+        left: 0px;
+        opacity: 1;
+    }
+}
+@keyframes fadeFromBotRight {
+    0% {
+        bottom: -50px;
+        right: -50px;
+    }
+    100% {
+        bottom: 0px;
+        right: 0px;
+        opacity: 1;
     }
 }

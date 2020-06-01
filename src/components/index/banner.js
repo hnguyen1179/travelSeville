@@ -5,14 +5,14 @@ import Img from 'gatsby-image';
 const Banner = () => {
     const data = useStaticQuery(graphql`
         query {
-            hotelImage: file(relativePath: { eq: "hotel.jpg" }) {
+            hotelImage: file(relativePath: { eq: "index/hotel.jpg" }) {
                 childImageSharp {
                     fluid(maxWidth: 600, quality: 90) {
                         ...GatsbyImageSharpFluid
                     }
                 }
             }
-            neighborhoodImage: file(relativePath: { eq: "neighborhood.jpg" }) {
+            neighborhoodImage: file(relativePath: { eq: "index/neighborhood.jpg" }) {
                 childImageSharp {
                     fluid(maxWidth: 600, quality: 90) {
                         ...GatsbyImageSharpFluid

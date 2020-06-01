@@ -7,7 +7,7 @@ import Banner from '../components/index/banner'
 
 const IndexPage = () => {
   return (
-    <div id="base">
+    <div id="index">
       <div className="intro-page">
         <div className="intro-page-text">
           <ul className="intro-page-text_title">

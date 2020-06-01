@@ -25,3 +25,19 @@ body, html {
     font-family: 'Apercu';
     src: url('../fonts/Apercu\ Pro\ Regular.otf') format('opentype')
 }
+
+// Colors 
+$white: #fff;
+$black: #000;
+$red: #aa151b;
+$yellow: #f1bf00;
+
+$titleFont: 'Romana';
+$bodyFont: 'Apercu';
+
+// Main Page Elements - Standardized Styling
+.red-bar {
+    z-index: -1;
+    position: absolute;
+    background-color: $red;
+}

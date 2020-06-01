@@ -1,0 +1,121 @@
+// Colors 
+$white: #fff;
+$black: #000;
+$red: #aa151b;
+$yellow: #f1bf00;
+
+$titleFont: 'Romana';
+$bodyFont: 'Apercu';
+
+// .container {
+//     height: 100vh;
+//     width: 100vw;
+//     margin: 0 !important;
+//     .architecture-red-bar {
+//         height: 250px;
+//         width: 100vw;
+//         polygon {
+//             fill: $red;
+//         };
+//     }
+// }
+
+#arquitectura {
+    height: 100vh; 
+
+    .red-bar {
+        position: absolute;
+        width: 100vw;
+        height: 65%;
+        top: 35%;
+    }
+    
+    .content {
+        height: fit-content;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        
+        .images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 5px;
+            .image {
+                border: 5px solid rgba(0, 0, 0, 0);
+                opacity: 0;
+            }
+    
+            .image:hover {
+                transition: 200ms;
+                border: 5px solid $yellow;
+                cursor: pointer;
+            }
+    
+            .image-grid-1 {
+                padding-top: 20%;
+                .pilatos-image {
+                    width: 300px;
+
+                    animation: fadeFromTopLeft 1.2s ease-in-out 1;
+                    animation-delay: 0.01s;
+                    animation-fill-mode: forwards;
+                }
+            }
+    
+            .image-grid-2 {
+                display: grid;
+                grid-gap: 5px;
+                .catedral-image {
+                    width: 500px;
+
+                    animation: fadeFromTopRight 1.2s ease-in-out 1;
+                    animation-delay: 0.01s;
+                    animation-fill-mode: forwards;
+                }
+                .setas-image {
+                    width: 400px;
+
+                    animation: fadeFromBotRight 1.2s ease-in-out 1;
+                    animation-delay: 0.01s;
+                    animation-fill-mode: forwards;
+                }
+            }
+        }
+        
+        .text {
+            margin-top: 8%;
+            opacity: 0;
+            padding-right: 2em;
+            position: relative;
+            
+            animation: fadeUp3 1.3s ease-out 1;
+            animation-delay: 0.01s;
+            animation-fill-mode: forwards;
+            .text_title {
+                color: $black;
+                font-family: $titleFont;
+                font-size: 4rem;
+            }
+            .text_body {
+                width: 230px;
+                font-family: $bodyFont;
+                font-size: 1.25rem;
+                color: white;
+            }
+        }
+        
+        
+    }
+}
+
+@keyframes fadeUp3 {
+    0% {
+        top: -50px;
+    }
+    100% {
+        top: 0px;
+        opacity: 1;
+    }
+}
