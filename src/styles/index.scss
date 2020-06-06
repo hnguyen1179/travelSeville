@@ -9,7 +9,7 @@ $bodyFont: 'Apercu';
 
 .container {
     width: 1640px;
-    min-width: 1640px;
+    // min-width: 1640px;
     margin: 0 auto;
 
     // @media(max-width: 1440px) {
@@ -227,7 +227,7 @@ $bodyFont: 'Apercu';
     flex-direction: column;
     align-items: center;
     position: relative;
-    min-width: 1640px;
+    // min-width: 1640px;
 
     .footer-text {
         font-family: $bodyFont;

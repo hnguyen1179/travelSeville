@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStaticQuery, graphql } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import '../styles/barrios.scss'
@@ -38,15 +38,19 @@ const Barrios = () => {
         }
     `)
 
-    const clickHandler = () => {
-        Array.from(document.getElementsByClassName('image')).forEach( element => {
-            element.style.opacity = "0";
-        })
-    }
+    const svgWidth = window.screen.width; 
+    const svgHeight = 250;
 
     return (
       <div id="barrios">
-        <svg className="red-bar"></svg>
+        {/* SVG */}
+        <svg className="red-bar-svg" xmlns="http://www.w3.org/2000/svg">
+          <path className="rbs" d={`M0 0h${svgWidth}v${svgHeight}H0z`} fill="#aa151b" />
+        </svg>
+
+        {/* DIV */}
+        {/* <svg className="red-bar"></svg> */}
+
         <main className="content">
           <div className="images">
             <div className="image-grid-1">
@@ -94,7 +98,7 @@ const Barrios = () => {
           </div>
         </main>
         <div className="next-page">
-          <div onClick={() => clickHandler()}>Next</div>
+          <Link to="/arquitectura">Next</Link>
         </div>
       </div>
     )
