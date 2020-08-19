@@ -1,0 +1,114 @@
+// Colors 
+$white: #fff;
+$black: #000;
+$red: #aa151b;
+$yellow: #f1bf00;
+
+$titleFont: 'Romana';
+$bodyFont: 'Apercu';
+
+#cultura {
+  height: 100vh;
+  width: 100vw; 
+
+  .hide {
+      display: none;
+  }
+
+  .red-bar {
+    height: 90%;
+    width: 400px;
+    background-color: $red;
+    left: 50%;
+  }
+
+  .content {
+    min-width: 870px;
+    display: flex;
+    justify-content: center;
+
+    .images {
+      position: relative;
+      display: grid;
+      grid-template-columns: min-content;
+      grid-gap: 5px;
+      right: 96px;
+      top: 100px;
+
+      .image-container {
+        border: 5px solid rgba(0, 0, 0, 0);
+        width: fit-content;
+        height: fit-content;
+        margin-left: auto;
+
+        &:hover {
+          transition: 200ms;
+          border: 5px solid $yellow;
+          cursor: pointer; 
+        }
+      }
+
+      .clicked {
+        transition: 200ms;
+        filter: brightness(40%);
+      }
+
+
+      .museum-fine-arts-image {
+        opacity: 0;
+        width: 400px;
+
+        animation: fadeFromTopRight 1.2s ease-in-out 1;
+        animation-delay: 0.01s;
+        animation-fill-mode: forwards;
+      }
+      .plaza-de-espana-image {
+        opacity: 0;
+        margin-left: auto;
+        width: 300px;
+
+        animation: fadeFromBotRight 1.2s ease-in-out 1;
+        animation-delay: 0.01s;
+        animation-fill-mode: forwards;
+      }
+    }
+
+  .text {
+    width: 230px;
+    height: fit-content;
+    position: relative;
+    top: 188px;
+    right: 50px;
+
+    animation: fadeUp2 0.6s ease-out 1;
+    animation-delay: 0.01s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+      .text_title {
+        color: $white;
+        font-family: $titleFont;
+        font-size: 4rem;
+
+        &::after {
+          content: '';
+          display: block;
+          position: relative;
+          bottom: 10px;
+          width: 190px;
+          height: 7px;
+          background-color: $yellow;
+        }
+      }
+      .text_body {
+        color: $white;
+        font-family: $bodyFont;
+        font-size: 1.25rem;
+      }
+    }
+  }
+}
+
+.cultura--exit-active {
+    opacity: 0;
+    transition: opacity 0.5s;
+}

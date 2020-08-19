@@ -7,7 +7,6 @@ $yellow: #f1bf00;
 $titleFont: 'Romana';
 $bodyFont: 'Apercu';
 
-
 #barrios {
     height: 100vh; 
 
@@ -17,31 +16,38 @@ $bodyFont: 'Apercu';
         height: 100%;
     }
 
-    // .red-bar {
-    //     height: 250px;
-    //     width: 100vw;
-    // }
+    .red-bar {
+        height: 250px;
+        width: 100vw;
+    }
     
     .content {
         display: flex;
         justify-content: center;
         
         .images {
-            margin-top: 60px;
+            position: relative;
+            top: 60px;
             padding: 50px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-gap: 5px;
-    
-            .image {
-                border: 5px solid rgba(0, 0, 0, 0);
-                opacity: 0;
-            }
-    
-            .image:hover {
+
+            .image-container {
                 transition: 200ms;
-                border: 5px solid $yellow;
-                cursor: pointer;
+                border: 5px solid rgba(0, 0, 0, 0);
+                overflow: hidden;
+
+                &:hover {
+                    cursor: pointer;
+                    transition: 200ms;
+                    border: 5px solid $yellow;
+                }
+            }
+
+            .clicked {
+                transition: 200ms;
+                filter: brightness(40%);
             }
     
             .image-grid-1 {
@@ -49,15 +55,19 @@ $bodyFont: 'Apercu';
                 grid-auto-rows: min-content;
                 grid-gap: 5px;
                 .centro-image {
+                    opacity: 0;
                     height: fit-content;
                     width: 350px;
+
                     animation: fadeFromBotLeft 1.2s ease-in-out 1;
                     animation-delay: 0.01s;
                     animation-fill-mode: forwards;
                 }
                 .santa-cruz-image {
+                    opacity: 0;
                     height: fit-content;
                     width: 350px;
+
                     animation: fadeFromTopLeft 1.2s ease-in-out 1;
                     animation-delay: 0.01s;
                     animation-fill-mode: forwards;
@@ -69,16 +79,20 @@ $bodyFont: 'Apercu';
                 grid-auto-rows: min-content;
                 grid-gap: 5px;
                 .arenal-image {
+                    opacity: 0;
                     vertical-align: top;
                     height: fit-content;
                     width: 100%;
+
                     animation: fadeFromTopRight 1.2s ease-in-out 1;
                     animation-delay: 0.01s;
                     animation-fill-mode: forwards;
                 }
                 .macarena-image {
+                    opacity: 0;
                     height: fit-content;
                     width: 350px;
+
                     animation: fadeFromBotRight 1.2s ease-in-out 1;
                     animation-delay: 0.01s;
                     animation-fill-mode: forwards;
@@ -87,11 +101,12 @@ $bodyFont: 'Apercu';
         }
         
         .text {
-            margin-top: 187px;
             width: 230px;
+            height: fit-content;
             position: relative;
+            top: 187px;
 
-            animation: fadeUp2 1.3s ease-out 1;
+            animation: fadeUp2 0.6s ease-out 1;
             animation-delay: 0.01s;
             animation-fill-mode: forwards;
             opacity: 0;
@@ -99,6 +114,17 @@ $bodyFont: 'Apercu';
                 color: $white;
                 font-family: $titleFont;
                 font-size: 4rem;
+                width: fit-content;
+
+                &::after {
+                    content: '';
+                    display: block;
+                    position: relative;
+                    bottom: 10px;
+                    width: 100%;
+                    height: 7px;
+                    background-color: $yellow;
+                }
             }
             .text_body {
                 font-family: $bodyFont;
@@ -107,100 +133,42 @@ $bodyFont: 'Apercu';
         }
     }
 
-    .next-page a {
-        position: absolute;
-        top: 90%; 
-        left: 90%; 
-        font-family: $bodyFont;
-        font-size: 1.25rem;
-        color: rgba(0, 0, 0, 0.5);
-        font-weight: 200;
-        position:relative;
-        text-decoration:none;
-        display:inline-block;
-        transition: 200ms;
-    }
+    // .next-page {
+    //     position: absolute;
+    //     top: 90%;
+    //     left: 90%; 
+    //     font-family: $bodyFont;
+    //     font-size: 1.25rem;
+    //     color: rgba(0, 0, 0, 0.5);
+    //     font-weight: 200;
+    //     text-decoration:none;
+    //     display:inline-block;
+    //     transition: 200ms;
+    // }
 
-    .next-page a :hover {
-        cursor: pointer;
-        // font-weight: 700;
-        color: $black;
-        transition: 250ms;
-    }
+    // .next-page:hover {
+    //     cursor: pointer;
+    //     // font-weight: 700;
+    //     color: $black;
+    //     transition: 250ms;
+    // }
 
-    .next-page a::after {
-        display: block;
-        content: "";
-        border-bottom: solid 3px $red;  
-        transform: scaleX(0);  
-        transition: transform 250ms ease-in-out;
-        transform-origin: 0%;
-    }
+    // .next-page::after {
+    //     display: block;
+    //     content: "";
+    //     border-bottom: solid 3px $red;  
+    //     transform: scaleX(0);  
+    //     transition: transform 250ms ease-in-out;
+    //     transform-origin: 0%;
+    // }
 
-    .next-page a:hover::after {
-        transform: scaleX(1);
-    }
+    // .next-page:hover::after {
+    //     transform: scaleX(1);
+    // }
 
 }
 
-// Keyframes
-@keyframes fadeUp2 {
-    0% {
-        bottom: -50px;
-    }
-    100% {
-        bottom: 0px;
-        opacity: 1;
-    }
-}
-
-@keyframes fadeFromTopLeft {
-    0% {
-        top: -50px;
-        left: -50px;
-    }
-    100% {
-        top: 0px;
-        left: 0px;
-        opacity: 1;
-    }
-}
-@keyframes fadeFromTopRight {
-    0% {
-        top: -50px;
-        right: -50px;
-    }
-    100% {
-        top: 0px;
-        right: 0px;
-        opacity: 1;
-    }
-}
-@keyframes fadeFromBotLeft {
-    0% {
-        bottom: -50px;
-        left: -50px;
-    }
-    100% {
-        bottom: 0px;
-        left: 0px;
-        opacity: 1;
-    }
-}
-@keyframes fadeFromBotRight {
-    0% {
-        bottom: -50px;
-        right: -50px;
-    }
-    100% {
-        bottom: 0px;
-        right: 0px;
-        opacity: 1;
-    }
-}
-
-$height: 400px;
-
-:export {
-    height: $height;
+.barrios--exit-active {
+    opacity: 0;
+    transition: opacity 0.5s;
 }

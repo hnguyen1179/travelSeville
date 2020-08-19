@@ -1,0 +1,159 @@
+// Colors 
+$white: #fff;
+$black: #000;
+$red: #aa151b;
+$yellow: #f1bf00;
+
+$titleFont: 'Romana';
+$bodyFont: 'Apercu';
+
+#explore {  
+  height: 100vh;
+  width: 100vw;
+
+  .red-bar-svg {
+    z-index: -5;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    fill :$red;
+  }
+
+  .tabs {
+    position: absolute;
+    display: flex;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+
+    .tabs-arquitectura {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .tabs-cultura {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .tabs-historia {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    button {
+      width: 25%;
+      height: 30px;
+
+      font-style: $titleFont;
+      font-size: 1.25rem;
+      margin: 0px 1px 1px 0px;
+      cursor: pointer;
+      background-color: $yellow;
+    }
+
+    button:disabled {
+      cursor: default;
+    }
+  }
+
+  .tabs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .content {
+    z-index: 5;
+  }
+
+  .next-page {
+    position: absolute;
+    top: 90%;
+    left: 90%; 
+    font-family: $bodyFont;
+    font-size: 1.25rem;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 200;
+    text-decoration:none;
+    transition: 200ms;
+    display: none;
+    
+    // animation: buttonFadeBlack 2s;
+  }
+
+  .next-page:hover {
+    cursor: pointer;
+    color: $black;
+    transition: 250ms;
+}
+
+  .next-page:disabled {
+    cursor: default;
+  }
+
+  .next-page::after {
+    display: block;
+    content: "";
+    border-bottom: solid 3px $red;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+    transform-origin: 0%;
+  }
+
+  .next-page:hover::after {
+    transform: scaleX(1);
+  }
+
+  .next-page:disabled:hover::after {
+    transform: scaleX(0);
+  }
+
+  .next-page-arquitectura {
+    position: absolute;
+    top: 90%;
+    left: 90%; 
+    font-family: $bodyFont;
+    font-size: 1.25rem;
+    color: rgba(228, 227, 227, 0.7);
+    font-weight: 200;
+    text-decoration:none;
+    transition: 200ms;
+    display: none;
+
+    // animation: buttonFadeWhite 2s;
+  }
+
+  .next-page-arquitectura:hover {
+    cursor: pointer;
+    color: $white;
+    transition: 250ms;
+  }
+
+  .next-page-arquitectura:disabled {
+    cursor: default;
+  }
+
+  .next-page-arquitectura::after {
+    display: block;
+    content: "";
+    border-bottom: solid 3px $yellow;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+    transform-origin: 0%;
+  }
+
+  .next-page-arquitectura:hover::after {
+    transform: scaleX(1);
+  }
+
+  .next-page-arquitectura:disabled:hover::after {
+    transform: scaleX(0);
+  }
+
+  .reveal {
+    display: inline-block;
+  }
+}

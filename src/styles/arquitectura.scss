@@ -7,63 +7,52 @@ $yellow: #f1bf00;
 $titleFont: 'Romana';
 $bodyFont: 'Apercu';
 
-// .container {
-//     height: 100vh;
-//     width: 100vw;
-//     margin: 0 !important;
-//     .architecture-red-bar {
-//         height: 250px;
-//         width: 100vw;
-//         polygon {
-//             fill: $red;
-//         };
-//     }
-// }
+.hide {
+    display: none;
+}
 
 #arquitectura {
     height: 100vh; 
-    width: 100vw;
-    overflow: hidden;
 
-    .red-bar-svg {
+    .red-bar {
         position: absolute;
-        width: 100%;
+        width: 100vw;
         height: calc(100vh - 340px);
         top: 340px;
     }
-
-    // .red-bar {
-    //     position: absolute;
-    //     width: 100vw;
-    //     height: calc(100vh - 340px);
-    //     top: 340px;
-    // }
     
     .content {
-        margin-top: 192px;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
         display: flex;
+        justify-content: center;
         
         .images {
+            position: relative;
+            top: 90px;
             display: grid;
             grid-template-columns: min-content auto;
             grid-gap: 5px;
-            .image {
+            padding: 50px;
+
+            .image-container {
                 border: 5px solid rgba(0, 0, 0, 0);
-                opacity: 0;
+                width: fit-content;
+
+                &:hover {
+                    transition: 200ms;
+                    border: 5px solid $yellow;
+                    cursor: pointer;
+                }
             }
-    
-            .image:hover {
+
+            .clicked {
                 transition: 200ms;
-                border: 5px solid $yellow;
-                cursor: pointer;
+                filter: brightness(40%);
             }
     
             .image-grid-1 {
                 padding-top: 20%;
                 .pilatos-image {
+                    opacity: 0;
                     width: 300px;
 
                     animation: fadeFromTopLeft 1.2s ease-in-out 1;
@@ -76,6 +65,7 @@ $bodyFont: 'Apercu';
                 display: grid;
                 grid-gap: 5px;
                 .catedral-image {
+                    opacity: 0;
                     width: 500px;
 
                     animation: fadeFromTopRight 1.2s ease-in-out 1;
@@ -83,6 +73,7 @@ $bodyFont: 'Apercu';
                     animation-fill-mode: forwards;
                 }
                 .setas-image {
+                    opacity: 0;
                     width: 400px;
 
                     animation: fadeFromBotRight 1.2s ease-in-out 1;
@@ -93,18 +84,28 @@ $bodyFont: 'Apercu';
         }
         
         .text {
-            padding-top: 90px;
-            opacity: 0;
-            padding-right: 2em;
+            height: fit-content;
             position: relative;
-            
-            animation: fadeUp3 1.3s ease-out 1;
+            top: 277px;
+        
+            animation: fadeUp3 0.6s ease-out 1;
             animation-delay: 0.01s;
             animation-fill-mode: forwards;
+            opacity: 0;
             .text_title {
                 color: $black;
                 font-family: $titleFont;
                 font-size: 4rem;
+                &::after {
+                    content: '';
+                    display: block;
+                    position: relative;
+                    bottom: 10px;
+                    width: 100%;
+                    height: 7px;
+                    background-color: $yellow;
+                    z-index: -1;
+                }
             }
             .text_body {
                 width: 230px;
@@ -113,17 +114,10 @@ $bodyFont: 'Apercu';
                 color: white;
             }
         }
-        
-        
     }
 }
 
-@keyframes fadeUp3 {
-    0% {
-        top: -50px;
-    }
-    100% {
-        top: 0px;
-        opacity: 1;
-    }
+.arquitectura--exit-active {
+    opacity: 0;
+    transition: opacity 0.5s;
 }

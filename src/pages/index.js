@@ -1,28 +1,37 @@
 import React from "react"
-import '../styles/index.scss'
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+
+// Style
+import "../styles/index.scss"
 
 // Component imports
-import Footer from '../components/index/footer'
-import Banner from '../components/index/banner'
+import Banner from "../components/index/banner"
 
 const IndexPage = () => {
   return (
     <div id="index">
       <div className="intro-page">
         <div className="intro-page-text">
-          <ul className="intro-page-text_title">
-            <li>SEVILLA</li>
-            <li>EN</li>
-            <li>UN</li>
-            <li>DIA</li>
-          </ul>
           <div className="intro-page-text_author">
             design and code by <span id="duke-nguyen">Duke Nguyen</span>
           </div>
         </div>
       </div>
+
       <Banner />
-      <Footer />
+
+      <div className="footer">
+        <AniLink
+          cover
+          to="/instructions"
+          direction="left"
+          duration={2}
+          bg="#f1bf00"
+          className="footer-text"
+        >
+          next page
+        </AniLink>
+      </div>
     </div>
   )
 }
