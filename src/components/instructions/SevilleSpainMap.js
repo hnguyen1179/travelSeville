@@ -20,7 +20,7 @@ const options = {
 
 const SevilleSpainMap = () => {
   const { isLoaded, LoadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyAc8YDdPQeS05YQbUPqdUQS7T2nbaXmSsc"  
+    googleMapsApiKey: ""  
   })
 
   if (LoadError) return "Error Loading Maps";

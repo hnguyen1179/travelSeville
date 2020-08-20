@@ -1,18 +1,19 @@
 import distanceHash from "./distanceHash.js"
 
-// const samplePoints = [
-//   "santaCruz",
-//   "pilatos",
-//   "catedralSevilla",
-//   "plazaEspana",
-//   "museumFineArts",
-//   "mariaLuisa",
-// ]
+const samplePoints = [
+  "santaCruz",
+  "pilatos",
+  "catedralSevilla",
+  "plazaEspana",
+  "museumFineArts",
+  "mariaLuisa",
+]
 
 class Configuration {
   constructor(points, order) {
     this.points = points
     this.order = order
+    this.distance
     this.fitness = this.calculateFitness()
   }
 
@@ -22,10 +23,16 @@ class Configuration {
     for (let i = 0; i < this.order.length - 1; i++) {
       const from = this.points[this.order[i]]
       const to = this.points[this.order[i + 1]]
+      // i + 1 === this.order.length
+      //   ? this.points[this.order[0]]
+      //   : this.points[this.order[i + 1]]
 
-      const distance = distanceHash[from + "2" + to] || distanceHash[to + "2" + from]
+      const distance =
+        distanceHash[from + "2" + to] || distanceHash[to + "2" + from]
       totalDistance += distance
     }
+
+    this.distance = totalDistance
 
     return (1 / totalDistance) * 1000
   }
@@ -97,8 +104,9 @@ const mutate = (configuration, mutationRate) => {
   const order = configuration.order
   for (let i = 0; i < order.length; i++) {
     if (Math.random() * 100 < mutationRate) {
-      const randomIndex = Math.floor(Math.random() * order.length)
-      swap(order, randomIndex, i)
+      let indexOne = Math.floor(Math.random() * order.length)
+      let indexTwo = Math.floor(Math.random() * order.length)
+      swap(order, indexOne, indexTwo)
     }
   }
 }
@@ -118,15 +126,15 @@ const normalizeFitness = array => {
 
 const numberOfGenerations = 2000
 const sizeOfPopulation = 500
-let mutationRate = 100
-const coolingRate = 4
+let mutationRate = 10
+const coolingRate = 0
 
 const geneticTSP = points => {
   const generations = []
   const order = []
   let totalFitness = 0
   let currentGeneration = 0
-  let bestConfig;
+  let bestConfig
   let bestFitness = -Infinity
 
   // Creating the original orders array
@@ -152,7 +160,7 @@ const geneticTSP = points => {
         randomConfigurationOne,
         randomConfigurationTwo
       )
-      mutate(randomConfiguration, mutationRate <= 10 ? 10 : mutationRate)
+      mutate(randomConfiguration, mutationRate <= 2 ? 2 : mutationRate)
       generations[i] = randomConfiguration
     }
 
@@ -168,9 +176,10 @@ const geneticTSP = points => {
     mutationRate -= coolingRate
   }
 
-  return bestConfig
+  console.log(bestConfig)
+  return generations
 }
 
-// const sample = geneticTSP(samplePoints)
+const sample = geneticTSP(samplePoints)
 
 export { shuffle, geneticTSP }
