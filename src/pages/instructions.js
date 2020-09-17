@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from "react"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import React, { useState, useRef, useEffect } from "react"
 import { TimelineLite, Power2 } from "gsap"
 import CSSRulePlugin from "gsap/CSSRulePlugin"
 
@@ -32,7 +31,7 @@ const Instructions = () => {
     const firstBreak = height() * 0.0074
     const secondBreak = height() - (window.innerHeight * 2) + (window.innerHeight * 0.03)
 
-    if (thirdSectionRef.current.getBoundingClientRect().top < 0) {
+    if (thirdSectionRef.current.getBoundingClientRect().top <= 0) {
       setCurrentSection("three")
     } else if (window.scrollY < firstBreak || window.scrollY > secondBreak) {
       setCurrentSection("one")

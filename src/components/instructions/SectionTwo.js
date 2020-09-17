@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { gsap, Power2 } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -110,20 +110,9 @@ const SectionTwo = () => {
             .to(".block-six-image img", imageZoomAnimation(1.2, -1.4))
             .to("#block-six-aside-cover", slideAnimation(coverDuration), "start")
   
-
-  Array.prototype.forEach.call(    
-    document.querySelectorAll("*"),
-    function(that) {
-      if (that.offsetWidth > document.documentElement.offsetWidth) {
-        console.log(that)
-      }
-    }
-  )
-  
   return (
     <>
       <article className="content">
-        {/* Background Header */}
         <header>
           <div className="section-title-container">
             <h1 className="section-title" id="background">
@@ -220,7 +209,7 @@ const SectionTwo = () => {
             <div id="block-five-aside-cover" />
             <p>
               Due to its rich history of being under Christian and Muslim rule, 
-              grand displays of Gothic architecture and be found intermixed with Moorish architecture throughout the city.
+              grand displays of Gothic architecture can be found intermixed with Moorish architecture throughout the city.
             </p>
           </aside>
         </section>
@@ -238,7 +227,7 @@ const SectionTwo = () => {
             <div id="block-six-aside-cover" />
             <p>
               It's distinct style of architecture is prominent in many movies and shows. You might 
-              recognize this scene from the once popular HBO series <i>Game of Thrones</i>.
+              recognize this scene from the once-popular HBO series <i>Game of Thrones</i>.
             </p>
           </aside>
         </section>

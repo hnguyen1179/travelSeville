@@ -44,12 +44,13 @@ $bodyFont: "Apercu";
 }
 
 #main {
+  overflow: hidden;
+
   .section-title {
     font-family: $titleFont;
-    font-size: 5rem;
     text-align: center;
     margin: 0;
-    font-size: 5rem;
+    font-size: 8rem;
     height: 100px;
     width: 600px;
     position: absolute;
@@ -86,7 +87,7 @@ $bodyFont: "Apercu";
       // Content of Container
       .text-top,
       .text-bottom {
-        font-size: 2.5rem;
+        font-size: 4rem;
         text-align: center;
         height: 46px;
         width: 350px;
@@ -103,7 +104,7 @@ $bodyFont: "Apercu";
         transform: translateX(-50%);
         bottom: 0;
         overflow: hidden;
-        font-size: 3.75rem;
+        font-size: 6rem;
       }
     }
   }
@@ -118,11 +119,11 @@ $bodyFont: "Apercu";
       padding: 3% 10%;
 
       aside {
-        font-size: 1.5rem;
+        font-size: 2.4rem;
       }
 
       header {
-        margin-bottom: 3rem;
+        margin-bottom: 4.8rem;
 
         .section-title-container {
           margin: 0 auto;
@@ -135,7 +136,7 @@ $bodyFont: "Apercu";
             height: 0%;
             width: 600px;
             margin: 0;
-            font-size: 5rem;
+            font-size: 8rem;
             position: absolute;
             bottom: 0;
             overflow: hidden;
@@ -186,9 +187,10 @@ $bodyFont: "Apercu";
             left: 50%;
             transform: translate(-50%, -50%);
             color: white;
+            font-size: 2.2rem;
 
             &::first-letter {
-              font-size: 2rem;
+              font-size: 3.2rem;
               font-weight: 700;
             }
           }
@@ -196,9 +198,9 @@ $bodyFont: "Apercu";
 
         .block-one-image {
           overflow: hidden;
-          width: 70%;
+          width: 60%;
           max-width: 800px;
-          margin: 2rem;
+          margin: 3.2rem;
           position: relative;
 
           #block-one-image-cover {
@@ -216,7 +218,7 @@ $bodyFont: "Apercu";
 
         .seville-satellite-image {
           height: 400px;
-          margin: 1.5rem 0;
+          margin: 2.4em 0;
           background-image: url("../images/instructions/seville-satellite.jpg");
           background-attachment: fixed;
           background-position: center;
@@ -236,8 +238,8 @@ $bodyFont: "Apercu";
           left: 60%;
           transform: translateY(-50%);
           background-color: rgba(0, 0, 0, 0.35);
-          padding: 1rem;
-          margin-right: 2rem;
+          padding: 1.6rem;
+          margin-right: 3.2rem;
 
           p {
             width: 90%;
@@ -245,9 +247,10 @@ $bodyFont: "Apercu";
             position: relative;
             left: 50%;
             transform: translateX(-50%);
+            font-size: 2.2rem;
 
             &::first-letter {
-              font-size: 2rem;
+              font-size: 3.2rem;
               font-weight: 700;
             }
           }
@@ -272,7 +275,7 @@ $bodyFont: "Apercu";
         }
 
         .block-three-aside {
-          margin: 2rem;
+          margin: 3.2rem;
           box-sizing: border-box;
           width: 30%;
           background-color: $yellow5;
@@ -289,9 +292,10 @@ $bodyFont: "Apercu";
 
           p {
             color: black;
+            font-size: 2.2rem;
 
             &::first-letter {
-              font-size: 2rem;
+              font-size: 3.2rem;
               font-weight: 700;
             }
           }
@@ -302,7 +306,7 @@ $bodyFont: "Apercu";
           position: relative;
           overflow: hidden;
           max-width: 700px;
-          margin: 2rem;
+          margin: 3.2rem;
           left: 8%;
 
           #block-three-image-cover {
@@ -321,7 +325,7 @@ $bodyFont: "Apercu";
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        padding: 2rem;
+        padding: 3.2rem;
         position: relative;
         margin-bottom: 100px;
 
@@ -337,8 +341,8 @@ $bodyFont: "Apercu";
         .block-four-aside {
           background-color: $brownOrange;
           width: 55%;
-          padding: 2rem;
-          margin-top: 1rem;
+          padding: 3.2rem;
+          margin-top: 1.6rem;
           position: relative;
           bottom: 100px;
           left: 5%;
@@ -350,9 +354,10 @@ $bodyFont: "Apercu";
 
           p {
             color: white;
+            font-size: 2.2rem;
 
             &::first-letter {
-              font-size: 2rem;
+              font-size: 3.2rem;
               font-weight: 700;
             }
           }
@@ -375,7 +380,7 @@ $bodyFont: "Apercu";
       }
 
       .block-five {
-        margin: 1rem;
+        margin: 1.6rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -394,8 +399,8 @@ $bodyFont: "Apercu";
         .block-five-aside {
           background-color: $red;
           width: 50%;
-          padding: 2rem;
-          margin: 2rem;
+          padding: 3.2rem;
+          margin: 3.2rem;
           position: relative;
           bottom: 100px;
           right: 9%;
@@ -407,9 +412,10 @@ $bodyFont: "Apercu";
 
           p {
             color: white;
+            font-size: 2.2rem;
 
             &::first-letter {
-              font-size: 2rem;
+              font-size: 3.2rem;
               font-weight: 700;
             }
           }
@@ -432,7 +438,7 @@ $bodyFont: "Apercu";
       }
 
       .block-six {
-        margin-top: 5rem;
+        margin-top: 8rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -450,8 +456,8 @@ $bodyFont: "Apercu";
         .block-six-aside {
           background-color: $pantone;
           width: 35%;
-          padding: 2rem;
-          margin: 2rem;
+          padding: 3.2rem;
+          margin: 3.2rem;
           z-index: 10;
           position: relative;
           right: 2%;
@@ -463,9 +469,10 @@ $bodyFont: "Apercu";
 
           p {
             color: white;
+            font-size: 2.2rem;
 
             &::first-letter {
-              font-size: 2rem;
+              font-size: 3.2rem;
               font-weight: 700;
             }
           }
@@ -509,7 +516,7 @@ $bodyFont: "Apercu";
 
           .section-title {
             margin: 0;
-            font-size: 5rem;
+            font-size: 8rem;
             height: 0%;
             width: fit-content;
             position: absolute;
@@ -529,7 +536,7 @@ $bodyFont: "Apercu";
         margin-top: 3%;
 
         .how-to-image-cover {
-          margin: 1rem;
+          margin: 1.6rem;
           width: 60%;
           border: 5px solid rgba(0, 0, 0, 0);
           transition: 200ms;
@@ -559,13 +566,13 @@ $bodyFont: "Apercu";
         .instructions {
           color: white;
           height: 100%;
-          margin: 1rem;
-          padding: 1rem;
+          margin: 1.6rem;
+          padding: 1.6rem;
 
           .instructions-head {
             display: flex;
-            margin-top: 1rem;
-            font-size: 2rem;
+            margin-top: 1.6rem;
+            font-size: 3.2rem;
 
             .instructions-number {
               background-color: rgba(0, 0, 0, 0.08);
@@ -605,8 +612,8 @@ $bodyFont: "Apercu";
           .instructions-subtext {
             background-color: rgba(0, 0, 0, 0.08);
             margin-left: 16%;
-            font-size: 1.25rem;
-            margin-top: 0.5rem;
+            font-size: 2rem;
+            margin-top: 0.8rem;
             position: relative;
             padding: 1%;
 
@@ -642,6 +649,7 @@ $bodyFont: "Apercu";
   transition: color 500ms;
   z-index: 5;
   opacity: 0;
+  font-size: 1.6rem;
 }
 
 .chevron-one {
@@ -692,5 +700,3 @@ $bodyFont: "Apercu";
     margin-top: -11px;
   }
 }
-
-

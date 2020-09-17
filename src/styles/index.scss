@@ -64,7 +64,7 @@ $bodyFont: "Apercu";
         .intro-page-text_author {
             text-align: center;
             font-family: $bodyFont;
-            font-size: 1.45rem;
+            font-size: 2.32rem;
             font-weight: 100;
             text-transform: uppercase;
             margin-top: 5px;
@@ -92,6 +92,7 @@ $bodyFont: "Apercu";
   background-color: $white;
   position: relative;
   height: 95vh;
+
   .row {
     display: flex;
     justify-content: space-evenly;
@@ -117,12 +118,11 @@ $bodyFont: "Apercu";
         margin-bottom: -10px;
         list-style: none;
         font-family: $titleFont;
-        font-size: 4rem;
+        font-size: 7.2rem;
 
         li {
           margin: 0 15px;
           display: inline-block;
-          font-size: 4.5rem;
           text-transform: uppercase;
           font-weight: 700;
 
@@ -161,7 +161,7 @@ $bodyFont: "Apercu";
 
         color: rgb(77, 77, 77);
         font-family: $bodyFont;
-        font-size: 1.25rem;
+        font-size: 2rem;
         top: 220px;
         margin-left: 15px;
         width: 290px;
@@ -220,6 +220,7 @@ $bodyFont: "Apercu";
   display: flex;
   justify-content: center;
   position: relative;
+  font-size: 1.6rem;
 
   .footer-text {
     font-family: $bodyFont;
@@ -233,7 +234,6 @@ $bodyFont: "Apercu";
 
   .footer-text:hover {
     cursor: pointer;
-    // font-weight: 700;
     color: $black;
     transition: 250ms;
   }
@@ -241,7 +241,8 @@ $bodyFont: "Apercu";
   .footer-text::after {
     display: block;
     content: "";
-    border-bottom: solid 3px $yellow;
+    z-index: -1;
+    border-bottom: solid 4px $yellow;
     transform: scaleX(0);
     transition: transform 250ms ease-in-out;
     transform-origin: 0%;

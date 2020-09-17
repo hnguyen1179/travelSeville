@@ -126,7 +126,7 @@ const Arquitectura = ({ nextPath }) => {
               />
             </div>
             <div
-              className="image-container"
+              className="image-container-setas"
               onClick={() => {
                 setImages(prev => ({ ...prev, setas: !prev.setas }))
               }}

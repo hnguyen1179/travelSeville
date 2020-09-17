@@ -43,14 +43,6 @@ const Cultura = ({ nextPath }) => {
 
   const nextRef = useRef(null)
 
-  // useEffect(() => {
-  //   const revealNext = setTimeout(() => {
-  //     nextRef.current.style.display = "inline-block"
-  //   }, 1600)
-
-  //   return () => clearTimeout(revealNext)
-  // }, [])
-
   useEffect(() => {
     sessionStorage.setItem('cultura', JSON.stringify(images))
   }, [images, setImages])
@@ -76,7 +68,7 @@ const Cultura = ({ nextPath }) => {
       <main className="content">
         <div className="images">
           <div
-            className="image-container"
+            className="image-container-plaza"
             onClick={() => {
               setImages(prev => ({ ...prev, plazaEspana: !prev.plazaEspana }))
             }}

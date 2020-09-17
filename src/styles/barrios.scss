@@ -27,11 +27,13 @@ $bodyFont: 'Apercu';
         
         .images {
             position: relative;
-            top: 60px;
-            padding: 50px;
+            top: 6rem;
+            padding: 5rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-gap: 5px;
+            min-width: 70rem;
+            width: 40vw;
 
             .image-container {
                 transition: 200ms;
@@ -54,10 +56,10 @@ $bodyFont: 'Apercu';
                 display: grid;
                 grid-auto-rows: min-content;
                 grid-gap: 5px;
+                
                 .centro-image {
                     opacity: 0;
                     height: fit-content;
-                    width: 350px;
 
                     animation: fadeFromBotLeft 1.2s ease-in-out 1;
                     animation-delay: 0.01s;
@@ -66,7 +68,6 @@ $bodyFont: 'Apercu';
                 .santa-cruz-image {
                     opacity: 0;
                     height: fit-content;
-                    width: 350px;
 
                     animation: fadeFromTopLeft 1.2s ease-in-out 1;
                     animation-delay: 0.01s;
@@ -78,11 +79,11 @@ $bodyFont: 'Apercu';
                 display: grid;
                 grid-auto-rows: min-content;
                 grid-gap: 5px;
+
                 .arenal-image {
                     opacity: 0;
                     vertical-align: top;
                     height: fit-content;
-                    width: 100%;
 
                     animation: fadeFromTopRight 1.2s ease-in-out 1;
                     animation-delay: 0.01s;
@@ -91,7 +92,6 @@ $bodyFont: 'Apercu';
                 .macarena-image {
                     opacity: 0;
                     height: fit-content;
-                    width: 350px;
 
                     animation: fadeFromBotRight 1.2s ease-in-out 1;
                     animation-delay: 0.01s;
@@ -113,7 +113,7 @@ $bodyFont: 'Apercu';
             .text_title {
                 color: $white;
                 font-family: $titleFont;
-                font-size: 4rem;
+                font-size: 6.4rem;
                 width: fit-content;
 
                 &::after {
@@ -128,44 +128,10 @@ $bodyFont: 'Apercu';
             }
             .text_body {
                 font-family: $bodyFont;
-                font-size: 1.25rem;
+                font-size: 2rem;
             }
         }
     }
-
-    // .next-page {
-    //     position: absolute;
-    //     top: 90%;
-    //     left: 90%; 
-    //     font-family: $bodyFont;
-    //     font-size: 1.25rem;
-    //     color: rgba(0, 0, 0, 0.5);
-    //     font-weight: 200;
-    //     text-decoration:none;
-    //     display:inline-block;
-    //     transition: 200ms;
-    // }
-
-    // .next-page:hover {
-    //     cursor: pointer;
-    //     // font-weight: 700;
-    //     color: $black;
-    //     transition: 250ms;
-    // }
-
-    // .next-page::after {
-    //     display: block;
-    //     content: "";
-    //     border-bottom: solid 3px $red;  
-    //     transform: scaleX(0);  
-    //     transition: transform 250ms ease-in-out;
-    //     transform-origin: 0%;
-    // }
-
-    // .next-page:hover::after {
-    //     transform: scaleX(1);
-    // }
-
 }
 
 .barrios--exit-active {

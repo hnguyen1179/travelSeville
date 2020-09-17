@@ -102,7 +102,7 @@ const Historia = ({ nextPath }) => {
             />
           </div>
           <div
-            className="image-container"
+            className="image-container-maria"
             onClick={() => {
               setImages(prev => ({ ...prev, mariaLuisa: !prev.mariaLuisa }))
             }}
