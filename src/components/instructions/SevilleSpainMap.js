@@ -12,8 +12,6 @@ const center = {
   lng: -5.984459,
 }
 
-const libraries = ["places"];
-
 const options = {
   styles: MapStyle,
   disableDefaultUI: true,

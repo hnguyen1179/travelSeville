@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { TimelineLite, Power2 } from "gsap"
 import CSSRulePlugin from "gsap/CSSRulePlugin"
 

@@ -9,7 +9,7 @@ const Cultura = ({ nextPath }) => {
   const data = useStaticQuery(graphql`
     query {
       museumImg: file(
-        relativePath: { eq: "cultura/museum-fine-arts-main.jpg" }
+        relativePath: { eq: "cultura/museum-fine-arts-3.jpg" }
       ) {
         childImageSharp {
           fluid(maxWidth: 800, quality: 90) {
@@ -18,7 +18,7 @@ const Cultura = ({ nextPath }) => {
         }
       }
       plazaImg: file(
-        relativePath: { eq: "cultura/plaza-de-espana-main.jpg" }
+        relativePath: { eq: "cultura/plaza-de-espana-3.jpg" }
       ) {
         childImageSharp {
           fluid(maxWidth: 800, quality: 90) {

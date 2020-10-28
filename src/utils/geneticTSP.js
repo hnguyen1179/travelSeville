@@ -1,74 +1,5 @@
 import distanceHash from "./distanceHash.js"
 
-// const distanceHash = {
-//   alcazar2museumFineArts: 13.614,
-//   alcazar2plazaEspana: 6.74,
-//   arenal2alcazar: 8.84,
-//   arenal2catedralSevilla: 5.251,
-//   arenal2macarena: 18.28,
-//   arenal2mariaLuisa: 15.389,
-//   arenal2museumFineArts: 6.075,
-//   arenal2pilatos: 11.564,
-//   arenal2plazaEspana: 14.825,
-//   arenal2santaCruz: 8.312,
-//   arenal2setas: 9.271,
-//   catedralSevilla2alcazar: 3.996,
-//   catedralSevilla2mariaLuisa: 12.007,
-//   catedralSevilla2museumFineArts: 9.618,
-//   catedralSevilla2plazaEspana: 10.632,
-//   catedralSevilla2setas: 7.61,
-//   centro2alcazar: 7.571,
-//   centro2arenal: 4.163,
-//   centro2catedralSevilla: 3.665,
-//   centro2macarena: 14.638,
-//   centro2mariaLuisa: 15.652,
-//   centro2museumFineArts: 6.221,
-//   centro2pilatos: 7.709,
-//   centro2plazaEspana: 14.275,
-//   centro2santaCruz: 6.601,
-//   centro2setas: 5.25,
-//   macarena2alcazar: 19.517,
-//   macarena2catedralSevilla: 17.171,
-//   macarena2mariaLuisa: 27.885,
-//   macarena2museumFineArts: 14.768,
-//   macarena2pilatos: 12.707,
-//   macarena2plazaEspana: 25.454,
-//   macarena2setas: 9.585,
-//   mariaLuisa2alcazar: 8.532,
-//   mariaLuisa2museumFineArts: 21.144,
-//   mariaLuisa2plazaEspana: 3.093,
-//   museumFineArts2plazaEspana: 20.169,
-//   pilatos2alcazar: 7.569,
-//   pilatos2catedralSevilla: 7.225,
-//   pilatos2mariaLuisa: 15.4,
-//   pilatos2museumFineArts: 13.063,
-//   pilatos2plazaEspana: 12.804,
-//   pilatos2setas: 5.687,
-//   santaCruz2alcazar: 1.176,
-//   santaCruz2catedralSevilla: 3.19,
-//   santaCruz2macarena: 18.356,
-//   santaCruz2mariaLuisa: 9.705,
-//   santaCruz2museumFineArts: 12.738,
-//   santaCruz2pilatos: 6.569,
-//   santaCruz2plazaEspana: 7.831,
-//   santaCruz2setas: 9.218,
-//   setas2alcazar: 10.392,
-//   setas2mariaLuisa: 18.922,
-//   setas2museumFineArts: 8.251,
-//   setas2plazaEspana: 16.864,
-// }
-
-// const samplePoints = [
-//   "santaCruz",
-//   "pilatos",
-//   "catedralSevilla",
-//   "setas",
-//   "plazaEspana",
-//   "museumFineArts",
-//   "mariaLuisa",
-//   "alcazar"
-// ]
-
 class Configuration {
   constructor(points, order) {
     this.points = points
@@ -194,7 +125,7 @@ const geneticTSP = points => {
   const generations = []
   const order = []
   const mutationRateMin = 0.125
-  const coolingFactor = 0.6
+  const coolingFactor = 0.5
 
   let currentGeneration = 0
   let mutationRate = 100
@@ -213,7 +144,6 @@ const geneticTSP = points => {
   normalizeFitness(generations)
 
   while (currentGeneration < numberOfGenerations) {
-    // console.log(mutationRate < mutationRateMin ? `<${mutationRateMin}` : mutationRate)
     // Populate a new generations based on the probabilites of the previous generations,
     // mutating them and crossing them over before assigning to a new generations
     for (let i = 0; i < generations.length; i++) {
@@ -241,7 +171,6 @@ const geneticTSP = points => {
     mutationRate = 100 * (coolingFactor ** currentGeneration)
   }
 
-  console.log("genetic algorithm ran")
   return bestConfig
 }
 

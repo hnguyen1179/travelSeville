@@ -9,7 +9,7 @@ const Arquitectura = ({ nextPath }) => {
   const data = useStaticQuery(graphql`
     query {
       pilatosImg: file(
-        relativePath: { eq: "arquitectura/casa-de-pilatos-main.png" }
+        relativePath: { eq: "arquitectura/casa-de-pilatos-3.jpg" }
       ) {
         childImageSharp {
           fluid(maxWidth: 800, quality: 90) {
@@ -18,7 +18,7 @@ const Arquitectura = ({ nextPath }) => {
         }
       }
       catedralImg: file(
-        relativePath: { eq: "arquitectura/catedral-sevilla-main.jpg" }
+        relativePath: { eq: "arquitectura/catedral-sevilla-3.jpg" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, quality: 90) {
@@ -26,7 +26,7 @@ const Arquitectura = ({ nextPath }) => {
           }
         }
       }
-      setasImg: file(relativePath: { eq: "arquitectura/setas-main.jpg" }) {
+      setasImg: file(relativePath: { eq: "arquitectura/setas-3.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 600, quality: 90) {
             ...GatsbyImageSharpFluid

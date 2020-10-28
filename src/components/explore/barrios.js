@@ -9,7 +9,7 @@ const Barrios = ({ nextPath }) => {
   const data = useStaticQuery(graphql`
     query {
       centroImg: file(
-        relativePath: { eq: "barrios/barrio-el-centro-main.png" }
+        relativePath: { eq: "barrios/barrio-el-centro-3.jpg" }
       ) {
         childImageSharp {
           fluid(maxWidth: 800, quality: 90) {
@@ -18,7 +18,7 @@ const Barrios = ({ nextPath }) => {
         }
       }
       arenalImg: file(
-        relativePath: { eq: "barrios/barrio-el-arenal-main.jpg" }
+        relativePath: { eq: "barrios/barrio-el-arenal-3.jpg" }
       ) {
         childImageSharp {
           fluid(maxWidth: 800, quality: 90) {
@@ -27,7 +27,7 @@ const Barrios = ({ nextPath }) => {
         }
       }
       santaCruzImg: file(
-        relativePath: { eq: "barrios/barrio-santa-cruz-main.jpg" }
+        relativePath: { eq: "barrios/barrio-santa-cruz-3.jpg" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, quality: 90) {
@@ -36,7 +36,7 @@ const Barrios = ({ nextPath }) => {
         }
       }
       macarenaImg: file(
-        relativePath: { eq: "barrios/barrio-macarena-main.png" }
+        relativePath: { eq: "barrios/barrio-macarena-3.jpg" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, quality: 90) {

@@ -10,7 +10,7 @@ const Historia = ({ nextPath }) => {
   const data = useStaticQuery(graphql`
     query {
       mariaLuisaImage: file(
-        relativePath: { eq: "historia/maria-luisa-main.png" }
+        relativePath: { eq: "historia/maria-luisa-3.jpg" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, quality: 90) {
@@ -19,7 +19,7 @@ const Historia = ({ nextPath }) => {
         }
       }
       alcazarImage: file(
-        relativePath: { eq: "historia/real-alcazar-main.png" }
+        relativePath: { eq: "historia/real-alcazar-3.jpg" }
       ) {
         childImageSharp {
           fluid(maxWidth: 600, quality: 90) {

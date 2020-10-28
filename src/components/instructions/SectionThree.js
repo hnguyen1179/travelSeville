@@ -28,35 +28,24 @@ const SectionThree = ({ currentSection, chevronType }) => {
   })
 
   gsap.to(".section-three .section-title", {
-    scrollTrigger: {
-      trigger: ".section-three .section-title",
-      start: "center 90%"
-    },
+    scrollTrigger: ".section-three",
     height: "100%",
     duration: 1.8,
     ease: Power2.easeInOut
   })
 
   gsap.to("#how-to-image-cover", {
-    scrollTrigger: {
-      trigger: "#how-to-image-cover",
-      start: "center 90%",
-    },
+    scrollTrigger: "#how-to-image-cover",
     width: "0%",
     duration: 0.8,
     ease: Power2.easeInOut,
   })
 
-  const stepOneTL = gsap.timeline({scrollTrigger: {
-    trigger: ".one-number",
-    start: "center 90%"
-  }})
+  const stepOneTL = gsap.timeline({scrollTrigger: ".one-number"})
 
   stepOneTL.to("#one-number", slideAnimation(0.8), "+=1")
            .to("#one-main", slideAnimation(0.8, -0.4))
            .to("#one-sub-one", slideAnimation(0.4, -0.4))
-
-  const stepTwoTL = gsap.timeline()
 
   return (
     <>
