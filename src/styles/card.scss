@@ -1,0 +1,55 @@
+// Colors 
+$white: #fff;
+$black: #000;
+$red: #aa151b;
+$yellow: #f1bf00;
+
+$titleFont: 'Romana';
+$bodyFont: 'Apercu';
+
+.card-container {
+  width: 50%;
+
+  :last-child {
+    margin-bottom: 4rem;
+  }
+}
+
+.card {
+  margin: 2rem;
+  padding: 1rem;
+  min-height: 75vh;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 3.6rem;
+  font-family: $titleFont;
+}
+
+.card-body {
+  display: flex;
+}
+
+.card-carousel-container {
+  width: 320px;
+  margin: auto; 
+  overflow: hidden;
+
+  .card-carousel-slide {
+    display: flex;
+    align-items: center;
+    background-color: rgba(128, 128, 128, 0.192);
+  
+    .card-image {
+      width: 300px;
+      margin: 10px;
+    }
+  }
+}
+
+.card-description {
+  width: 30%;
+  font-size: 1.8rem;
+  font-family: $bodyFont;
+}

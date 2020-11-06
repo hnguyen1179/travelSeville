@@ -26,7 +26,7 @@ const IndexPage = () => {
           to="/instructions"
           direction="left"
           duration={2}
-          bg="#f1bf00"
+          bg="#aa151b"
           className="footer-text"
         >
           next page

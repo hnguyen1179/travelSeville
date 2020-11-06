@@ -61,7 +61,7 @@ const SectionThree = ({ currentSection, chevronType }) => {
                   <div className="instructions-number one-number"><div id="one-number"/>1.</div>
                   <div className="instructions-main one-main"><div id="one-main"/>Click on images that appeal to you</div>
                 </div>
-            <div className="instructions-subtext one-sub-one"><div id="one-sub-one" />Hint: click on the image to the left </div>
+            <div className="instructions-subtext one-sub-one"><div id="one-sub-one" />Hint: click on the image to the right </div>
             <div className="instructions-subtext one-sub-two"><div id="one-sub-two" />Selected images will darken when selected</div>
 
                 <Transition

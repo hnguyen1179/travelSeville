@@ -1,12 +1,19 @@
 import React, { useRef, useState, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { geneticTSP } from "../utils/geneticTSP"
+
+// Libraries
+import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+
+// Components
 import DirectionsMap from "../components/day/DirectionsMap"
-// import latLongData from "../utils/latitudeLongitude"
+import Card from "../components/day/Card"
+import Img from "gatsby-image"
+
+// Utils
+import { geneticTSP } from "../utils/geneticTSP"
 import locationNames from "../utils/locationNames"
 import normalizedLatLongData from "../utils/latLongDataNormalized"
-
-import Img from "gatsby-image"
+import { summaries } from "../utils/locationSummaries"
 
 // Style
 import "../styles/day.scss"
@@ -137,7 +144,7 @@ const Day = () => {
           }
         }
       }
-      catedralImg1: file(
+      catedralSevillaImg1: file(
         relativePath: { eq: "arquitectura/catedral-sevilla-1.jpg" }
       ) {
         childImageSharp {
@@ -146,7 +153,7 @@ const Day = () => {
           }
         }
       }
-      catedralImg2: file(
+      catedralSevillaImg2: file(
         relativePath: { eq: "arquitectura/catedral-sevilla-2.jpg" }
       ) {
         childImageSharp {
@@ -155,7 +162,7 @@ const Day = () => {
           }
         }
       }
-      catedralImg3: file(
+      catedralSevillaImg3: file(
         relativePath: { eq: "arquitectura/catedral-sevilla-3.jpg" }
       ) {
         childImageSharp {
@@ -185,49 +192,49 @@ const Day = () => {
           }
         }
       }
-      museumImg1: file(relativePath: { eq: "cultura/museum-fine-arts-1.jpg" }) {
+      museumFineArtsImg1: file(relativePath: { eq: "cultura/museum-fine-arts-1.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 800, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      museumImg2: file(relativePath: { eq: "cultura/museum-fine-arts-2.jpg" }) {
+      museumFineArtsImg2: file(relativePath: { eq: "cultura/museum-fine-arts-2.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 800, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      museumImg3: file(relativePath: { eq: "cultura/museum-fine-arts-3.jpg" }) {
+      museumFineArtsImg3: file(relativePath: { eq: "cultura/museum-fine-arts-3.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 800, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      plazaImg1: file(relativePath: { eq: "cultura/plaza-de-espana-1.jpg" }) {
+      plazaEspanaImg1: file(relativePath: { eq: "cultura/plaza-de-espana-1.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 800, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      plazaImg2: file(relativePath: { eq: "cultura/plaza-de-espana-2.jpg" }) {
+      plazaEspanaImg2: file(relativePath: { eq: "cultura/plaza-de-espana-2.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 800, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      plazaImg3: file(relativePath: { eq: "cultura/plaza-de-espana-3.jpg" }) {
+      plazaEspanaImg3: file(relativePath: { eq: "cultura/plaza-de-espana-3.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 800, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      mariaLuisaImage1: file(
+      mariaLuisaImg1: file(
         relativePath: { eq: "historia/maria-luisa-1.jpg" }
       ) {
         childImageSharp {
@@ -236,7 +243,7 @@ const Day = () => {
           }
         }
       }
-      mariaLuisaImage2: file(
+      mariaLuisaImg2: file(
         relativePath: { eq: "historia/maria-luisa-2.jpg" }
       ) {
         childImageSharp {
@@ -245,7 +252,7 @@ const Day = () => {
           }
         }
       }
-      mariaLuisaImage3: file(
+      mariaLuisaImg3: file(
         relativePath: { eq: "historia/maria-luisa-3.jpg" }
       ) {
         childImageSharp {
@@ -254,21 +261,21 @@ const Day = () => {
           }
         }
       }
-      alcazarImage1: file(relativePath: { eq: "historia/real-alcazar-1.jpg" }) {
+      alcazarImg1: file(relativePath: { eq: "historia/real-alcazar-1.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 600, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      alcazarImage2: file(relativePath: { eq: "historia/real-alcazar-2.jpg" }) {
+      alcazarImg2: file(relativePath: { eq: "historia/real-alcazar-2.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 600, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      alcazarImage3: file(relativePath: { eq: "historia/real-alcazar-3.jpg" }) {
+      alcazarImg3: file(relativePath: { eq: "historia/real-alcazar-3.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 600, quality: 90) {
             ...GatsbyImageSharpFluid
@@ -277,17 +284,17 @@ const Day = () => {
       }
     }
   `)
-
-  const canvasRef = useRef(null)
+  
+  const [currentCard, setCurrentCard] = useState(1)
   const [waypoints, setWaypoints] = useState([])
   const [route, setRoute] = useState([])
 
+  // Returns an object with keys: location (proper name) & stopover
   const properName = locationName => {
     return { location: locationNames[locationName], stopover: true }
   }
 
   // Rearranges the order of the most efficient route to start with the neighborhood
-  // AND also converts each name into a lat/lng obj literal for google waypoints 
   const rearrange = (bestConfig) => {
     const neighborhoods = ["santaCruz", "arenal", "macarena", "centro"]
 
@@ -301,6 +308,7 @@ const Day = () => {
     return bestConfig
   }
 
+  // Takes in an array of locations and returns an array of coordinates 
   const convertToLatLong = (bestConfig) => {
     let output = []
     for (let i = 0; i < bestConfig.length; i++) {
@@ -309,8 +317,6 @@ const Day = () => {
 
     return output
   }
-
-
 
   useEffect(() => {
     const barrios = JSON.parse(sessionStorage.getItem("barrios"))
@@ -335,33 +341,6 @@ const Day = () => {
   
     const bestConfig = geneticTSP(pointArray)
 
-    // This creates a line representation of the most efficient path generated with 
-    // the genetic algorithm 
-    const canvas = canvasRef.current
-    const ctx = canvas.getContext("2d")
-
-    ctx.beginPath()
-    for (let i = 0; i < bestConfig.order.length; i++) {
-      let pointName = pointArray[bestConfig.order[i]]
-      let x = normalizedLatLongData[pointName][0] * 5
-      let y = normalizedLatLongData[pointName][1] * 5 + 30
-
-      if (i === 0) {
-        ctx.moveTo(x, y)
-        ctx.fillRect(x, y, 5, 5)
-        ctx.font = "15px Arial"
-        ctx.fillText(pointName, x, y + 20)
-      } else {
-        ctx.lineTo(x, y)
-        ctx.fillRect(x, y, 5, 5)
-        ctx.font = "15px Arial"
-        ctx.fillText(pointName, x, y + 20)
-      }
-    }
-
-    ctx.closePath()
-    ctx.stroke()
-
     let optimizedRoute = []
     
     // optimizedRoute consists of an array formed with points that are represented 
@@ -380,36 +359,70 @@ const Day = () => {
     // waypoints is now an array of lat long object literals that starts off with the 
     // neighborhood being in the 0th index 
     setWaypoints(latLongOptimizedRoute)
-
   }, [])
-  
+
+  useEffect(() => {
+    console.log(currentCard)
+  }, currentCard)
+
+  // TO DO;
+  /** 1. Work out the react-scroll library and get it working
+   *      - Scrolling down will switch the 'active' marker; red 
+   *      - Clicking on markers will automatically scroll you to the card
+   * 
+   *  2. Carousel working
+   *  3. Stylize the UI 
+   * 
+   **/
+
+
   return (
-    <>
-      {waypoints.length !== 0 ? (
-        <DirectionsMap
-          id="googleMaps"
-          origin={waypoints[0].location}
-          destination={waypoints[waypoints.length - 1].location}
-          waypoints={waypoints.slice(1, waypoints.length - 1)}
-        />
-      ) : null}
+    <div id="day">
+      <div id="yellow-page" />
+      <h1 className="day-title">
+        Itinerary
+      </h1>
 
-      {route.length !== 0 ? (
-        <ul>
-          {
-            route.map(point => {
-              return (
-                <li>
-                  {point}
-                </li>
-              )
-            })
-          }
-        </ul>
-      ): null}
+      <div className="day-content">
+        {
+          waypoints.length !== 0 && (
+          <DirectionsMap
+            currentCard={currentCard}
+            setCurrentCard={setCurrentCard}
+            origin={waypoints[0].location}
+            destination={waypoints[waypoints.length - 1].location}
+            waypoints={waypoints.slice(1, waypoints.length - 1)}
+          />)
+        }
 
-      <canvas ref={canvasRef} width="800" height="800" />
-    </>
+        {
+          route.length !== 0 && ( 
+          <ul className="card-container">
+            {
+              route.map((point, index) => {
+                const images = [
+                              data[`${point}Img1`].childImageSharp.fluid, 
+                              data[`${point}Img2`].childImageSharp.fluid, 
+                              data[`${point}Img3`].childImageSharp.fluid, 
+                            ]
+                const location = locationNames[point].replace(", Sevilla", "")
+                
+                return (
+                  <li key={index}>
+                    <Link
+                      onSetActive={() => console.log(`scrolled to ${index}`)}
+                    >
+                      <Card index={index + 1} location={location} images={images} description={summaries[point]}/>
+                    </Link>
+                  </li>
+                )
+              })
+            }
+          </ul>)
+        }
+
+      </div>
+    </div>
   )
 }
 

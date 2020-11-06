@@ -1,17 +1,15 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import {
   GoogleMap,
   DirectionsService,
   DirectionsRenderer,
-  useLoadScript
+  useLoadScript,
+  Marker
 } from "@react-google-maps/api"
 import MapStyle from "../../styles/SevilleSpainMap"
-// import latLongData from "../../utils/latitudeLongitude"
 
-const containerStyle = {
-  width: "600px",
-  height: "700px",
-}
+import yellowMarker from "./yellow-circle.png"
+import redMarker from "./red-circle.png"
 
 const center = {
   lat: 37.389091,
@@ -29,63 +27,113 @@ const libraries = [
   "places"
 ]
 
-const DirectionsMap = ({ origin, destination, waypoints }) => {
+const yellowMarkerObject = {
+  url: yellowMarker,
+  scaledSize: {
+    height: 32,
+    width: 32
+  }
+}
+
+const redMarkerObject = {
+  url: redMarker,
+  scaledSize: {
+    height: 32,
+    width: 32
+  }
+}
+
+const DirectionsMap = ({ currentCard, setCurrentCard, origin, destination, waypoints }) => {
   const [response, setResponse] = useState(null);
   const { isLoaded, LoadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyAc8YDdPQeS05YQbUPqdUQS7T2nbaXmSsc",
     libraries: libraries,
   })
 
-  const [directionsOptions, setDirectionsOptions] = useState({
+  const directionsOption = {
     travelMode: 'WALKING',
     origin: origin,
     destination: destination,
     waypoints: waypoints,
-  })
+  }
 
   if (LoadError) return "Error Loading Maps"
   if (!isLoaded) return "Loading Map"
 
-  const directionsCB = (response) => {
-    console.log(response)
-
+  const directionsCB = (output) => {
+    // This prevents rerenderings from setResponse thereby creating an over_query_limit error
+    // This is an infinite loop... Rerender from setResponse => callback is called => directionsCB => setResponse
     if (response !== null) {
-      if (response.status === "OK") {
-        setResponse(response)
+      return
+    }
+
+    if (output !== null) {
+      if (output.status === "OK") {
+        setResponse(output)
       } else {
-        console.log("response: ", response)
+        console.log("response: ", output)
       }
     }
   }
 
+  // Placeholder for 
+  const labelClick = (index) => {
+    console.log(`current card is now ${index}`)
+    setCurrentCard(index)
+  }
+
   return (
     <GoogleMap
-      mapContainerStyle={containerStyle}
-      center={center}
-      zoom={12}
+      id={"googleMaps"}
       options={options}
     >
       {
-        (
-          directionsOptions.origin !== '' &&
-          directionsOptions.destination !== ''
-        ) && (
           <DirectionsService
-            options={directionsOptions}
+            options={directionsOption}
             callback={directionsCB}
           />
-        )
       }
 
       {
         response !== null && (
           <DirectionsRenderer
             options={{
-              directions: response
+              directions: response,
+              suppressMarkers: true
             }}
           />
         )
       }
+      
+      {
+        response !== null && (
+          response.routes[0].legs.map((leg, index) => {
+            return (
+              <Marker
+                key={index}
+                position={leg.start_location}
+                label={(index + 1).toString()}
+                onClick={() => labelClick(index + 1)}
+                icon={currentCard === index + 1 ? redMarkerObject : yellowMarkerObject}
+                zIndex={currentCard === index + 1 ? 1 : -1}
+              />
+            )
+          })
+        )
+      }
+    
+      {
+        response !== null && (
+          <Marker
+            position={response.routes[0].legs[response.routes[0].legs.length-1].end_location}
+            label={(response.routes[0].legs.length + 1).toString()}
+            onClick={() => labelClick(response.routes[0].legs.length + 1)}
+            icon={currentCard === response.routes[0].legs.length + 1 ? redMarkerObject : yellowMarkerObject}
+            zIndex={currentCard === response.routes[0].legs.length + 1 ? 1 : -1}
+          />
+        )
+      }
+
     </GoogleMap>
   )
 }
