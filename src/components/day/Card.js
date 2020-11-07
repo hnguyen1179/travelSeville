@@ -34,7 +34,7 @@ const Card = ({ index, location, images, description }) => {
   //  - Create a carousel for each card, flip animation? 
 
   return (
-    <div className="card">
+    <div className={`card card-${index}`}>
       <h1 className="card-title"> 
         {index + "."} {location} 
       </h1>
@@ -49,6 +49,9 @@ const Card = ({ index, location, images, description }) => {
                       className={"card-image"}
                       draggable={false}
                       fluid={image}
+                      imgStyle={{
+                        objectFit: "contain",
+                      }}
                     />
                   </div>
                 )

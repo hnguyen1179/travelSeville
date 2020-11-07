@@ -8,7 +8,9 @@ $titleFont: "Romana";
 $bodyFont: "Apercu";
 
 #day {
-  height: calc(100vh - 2rem);
+  // height: calc(100vh - 2rem);
+  height: auto;
+  // height: 9000px;
   z-index: 1;
 }
 
@@ -26,18 +28,22 @@ $bodyFont: "Apercu";
 }
 
 #googleMaps {
-  align-self: flex-start;
   margin: 2rem;
   width: 35%;
   height: 75vh;
-  position: sticky !important;
-  top: 15%;
+  position: fixed !important;
+  top: 13%;
+  left: 8%;
 }
 
-.day-title {
-  font-size: 6rem;
-  text-align: center;
-  margin: 2rem 2rem 0 0;
+.day-banner {
+  
+  .day-title {
+    font-size: 6rem;
+    text-align: center;
+    margin: 2rem 0 0 0;
+
+  }
 }
 
 .day-content {
@@ -49,5 +55,5 @@ $bodyFont: "Apercu";
 .day-map-placeholder {
   width: 35%;
   height: 75vh;
-  background-color: $red;
+  // background-color: $red;
 }

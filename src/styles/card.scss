@@ -9,6 +9,7 @@ $bodyFont: 'Apercu';
 
 .card-container {
   width: 50%;
+  // border: 1px solid red;
 
   :last-child {
     margin-bottom: 4rem;
@@ -19,11 +20,13 @@ $bodyFont: 'Apercu';
   margin: 2rem;
   padding: 1rem;
   min-height: 75vh;
+
+  // border: 1px dotted red;
 }
 
 .card-title {
   text-align: center;
-  font-size: 3.6rem;
+  font-size: clamp(2.4rem, 3vw, 3.6rem);
   font-family: $titleFont;
 }
 
@@ -32,24 +35,26 @@ $bodyFont: 'Apercu';
 }
 
 .card-carousel-container {
-  width: 320px;
+  width: calc(20vw + 4rem);
   margin: auto; 
   overflow: hidden;
 
   .card-carousel-slide {
     display: flex;
     align-items: center;
+    min-height: 60vh;
     background-color: rgba(128, 128, 128, 0.192);
   
     .card-image {
-      width: 300px;
-      margin: 10px;
+      width: 20vw;
+      margin: 2rem;
     }
   }
 }
 
 .card-description {
   width: 30%;
-  font-size: 1.8rem;
+  font-size: clamp(1.4rem, 1.3vw, 3rem);
+  // font-size: 1.2vw;
   font-family: $bodyFont;
 }

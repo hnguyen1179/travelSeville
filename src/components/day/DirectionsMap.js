@@ -8,6 +8,8 @@ import {
 } from "@react-google-maps/api"
 import MapStyle from "../../styles/SevilleSpainMap"
 
+import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+
 import yellowMarker from "./yellow-circle.png"
 import redMarker from "./red-circle.png"
 
@@ -43,7 +45,7 @@ const redMarkerObject = {
   }
 }
 
-const DirectionsMap = ({ currentCard, setCurrentCard, origin, destination, waypoints }) => {
+const DirectionsMap = ({ cardRefs, currentCard, setCurrentCard, origin, destination, waypoints }) => {
   const [response, setResponse] = useState(null);
   const { isLoaded, LoadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyAc8YDdPQeS05YQbUPqdUQS7T2nbaXmSsc",
@@ -82,6 +84,11 @@ const DirectionsMap = ({ currentCard, setCurrentCard, origin, destination, waypo
     setCurrentCard(index)
   }
 
+  const scrollTo = (index) => {
+    setCurrentCard(index)
+    window.scrollTo({left: 0, top: cardRefs[`cardRef${index}`].current.offsetTop - 100, behavior: 'smooth'})
+  }
+
   return (
     <GoogleMap
       id={"googleMaps"}
@@ -113,7 +120,7 @@ const DirectionsMap = ({ currentCard, setCurrentCard, origin, destination, waypo
                 key={index}
                 position={leg.start_location}
                 label={(index + 1).toString()}
-                onClick={() => labelClick(index + 1)}
+                onClick={() => scrollTo(index + 1)}
                 icon={currentCard === index + 1 ? redMarkerObject : yellowMarkerObject}
                 zIndex={currentCard === index + 1 ? 1 : -1}
               />
@@ -127,7 +134,7 @@ const DirectionsMap = ({ currentCard, setCurrentCard, origin, destination, waypo
           <Marker
             position={response.routes[0].legs[response.routes[0].legs.length-1].end_location}
             label={(response.routes[0].legs.length + 1).toString()}
-            onClick={() => labelClick(response.routes[0].legs.length + 1)}
+            onClick={() => scrollTo(response.routes[0].legs.length + 1)}
             icon={currentCard === response.routes[0].legs.length + 1 ? redMarkerObject : yellowMarkerObject}
             zIndex={currentCard === response.routes[0].legs.length + 1 ? 1 : -1}
           />

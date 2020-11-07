@@ -318,6 +318,17 @@ const Day = () => {
     return output
   }
 
+  const refs = {
+    cardRef1: useRef(null),
+    cardRef2: useRef(null),
+    cardRef3: useRef(null),
+    cardRef4: useRef(null),
+    cardRef5: useRef(null),
+    cardRef6: useRef(null),
+    cardRef7: useRef(null),
+    cardRef8: useRef(null),
+  }
+
   useEffect(() => {
     const barrios = JSON.parse(sessionStorage.getItem("barrios"))
     const arquitectura = JSON.parse(sessionStorage.getItem("arquitectura"))
@@ -379,21 +390,30 @@ const Day = () => {
   return (
     <div id="day">
       <div id="yellow-page" />
-      <h1 className="day-title">
-        Itinerary
-      </h1>
+      <div className="day-banner">
+        <h1 className="day-title">
+          Itinerary
+        </h1>
+      </div>
+
+      {
+        waypoints.length !== 0 && (
+        <DirectionsMap
+          cardRefs={refs}
+          currentCard={currentCard}
+          setCurrentCard={setCurrentCard}
+          origin={waypoints[0].location}
+          destination={waypoints[waypoints.length - 1].location}
+          waypoints={waypoints.slice(1, waypoints.length - 1)}
+        />)
+      }
 
       <div className="day-content">
-        {
-          waypoints.length !== 0 && (
-          <DirectionsMap
-            currentCard={currentCard}
-            setCurrentCard={setCurrentCard}
-            origin={waypoints[0].location}
-            destination={waypoints[waypoints.length - 1].location}
-            waypoints={waypoints.slice(1, waypoints.length - 1)}
-          />)
-        }
+        {/* 
+          Placeholder gives the illusion that the Map's position: fixed 
+          allows for relative position, rather than absolute positioning
+        */}
+        <div className="day-map-placeholder"/>
 
         {
           route.length !== 0 && ( 
@@ -408,12 +428,8 @@ const Day = () => {
                 const location = locationNames[point].replace(", Sevilla", "")
                 
                 return (
-                  <li key={index}>
-                    <Link
-                      onSetActive={() => console.log(`scrolled to ${index}`)}
-                    >
-                      <Card index={index + 1} location={location} images={images} description={summaries[point]}/>
-                    </Link>
+                  <li key={index} ref={refs[`cardRef${index + 1}`]}>
+                    <Card index={index + 1} location={location} images={images} description={summaries[point]}/>
                   </li>
                 )
               })
