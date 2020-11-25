@@ -62,16 +62,6 @@ const Barrios = ({ nextPath }) => {
 
   const nextRef = useRef(null)
 
-  // useEffect(() => {
-  //   const revealNext = setTimeout(() => {
-  //     if (Object.values(images).some(x => x === true)) {
-  //       nextRef.current.style.display = "inline-block"
-  //     }
-  //   }, 1600)
-
-  //   return () => clearTimeout(revealNext)
-  // }, [])
-
   useEffect(() => {
     sessionStorage.setItem("barrios", JSON.stringify(images))
   }, [images, setImages])
@@ -85,10 +75,11 @@ const Barrios = ({ nextPath }) => {
   }
 
   const checkNext = () => {
-    if (Object.values(images).some(x => x === true))
+    if (Object.values(images).some(x => x === true)) {
       return " reveal"
-    else 
+    } else {
       return ""
+    }
   }
 
   return (

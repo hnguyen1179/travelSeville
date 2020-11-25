@@ -80,8 +80,8 @@ $bodyFont: 'Apercu';
     text-decoration:none;
     transition: 200ms;
     display: none;
-    
-    // animation: buttonFadeBlack 2s;
+
+    visibility: hidden;
   }
 
   .next-page:hover {
@@ -122,7 +122,8 @@ $bodyFont: 'Apercu';
     text-decoration:none;
     transition: 200ms;
     display: none;
-
+    
+    visibility: hidden;
     // animation: buttonFadeWhite 2s;
   }
 
@@ -155,5 +156,6 @@ $bodyFont: 'Apercu';
 
   .reveal {
     display: inline-block;
+    visibility: visible;
   }
 }

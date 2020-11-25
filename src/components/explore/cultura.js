@@ -57,10 +57,11 @@ const Cultura = ({ nextPath }) => {
   }
 
   const checkNext = () => {
-    if (Object.values(images).some(x => x === true))
+    if (Object.values(images).some(x => x === true)) {
       return " reveal"
-    else
+    } else {
       return ""
+    }
   }
 
   return (

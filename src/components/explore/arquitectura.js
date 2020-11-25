@@ -50,14 +50,6 @@ const Arquitectura = ({ nextPath }) => {
   )
   const nextRef = useRef(null)
 
-  // useEffect(() => {
-  //   const revealNext = setTimeout(() => {
-  //     nextRef.current.style.display = "inline-block"
-  //   }, 1600)
-
-  //   return () => clearTimeout(revealNext)
-  // }, [])
-
   useEffect(() => {
     sessionStorage.setItem('arquitectura', JSON.stringify(images))
   }, [images, setImages])
@@ -72,10 +64,11 @@ const Arquitectura = ({ nextPath }) => {
   }
 
   const checkNext = () => {
-    if (Object.values(images).some(x => x === true))
+    if (Object.values(images).some(x => x === true)) {
       return " reveal"
-    else
+    } else {
       return ""
+    }
   }
 
   return (

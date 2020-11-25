@@ -1,19 +1,21 @@
 import React, { useRef, useState, useEffect } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import Img from "gatsby-image"
 
 // Libraries
-import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+import { InView } from 'react-intersection-observer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { gsap, Power2 } from "gsap"
 
 // Components
 import DirectionsMap from "../components/day/DirectionsMap"
 import Card from "../components/day/Card"
-import Img from "gatsby-image"
 
 // Utils
 import { geneticTSP } from "../utils/geneticTSP"
 import locationNames from "../utils/locationNames"
-import normalizedLatLongData from "../utils/latLongDataNormalized"
 import { summaries } from "../utils/locationSummaries"
+import "../utils/fontAwesome.js"
 
 // Style
 import "../styles/day.scss"
@@ -23,42 +25,42 @@ const Day = () => {
     query {
       centroImg1: file(relativePath: { eq: "barrios/barrio-el-centro-1.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 800, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       centroImg2: file(relativePath: { eq: "barrios/barrio-el-centro-2.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 800, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       centroImg3: file(relativePath: { eq: "barrios/barrio-el-centro-3.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 800, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       arenalImg1: file(relativePath: { eq: "barrios/barrio-el-arenal-1.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 800, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       arenalImg2: file(relativePath: { eq: "barrios/barrio-el-arenal-2.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 800, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       arenalImg3: file(relativePath: { eq: "barrios/barrio-el-arenal-3.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 800, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -121,7 +123,7 @@ const Day = () => {
         relativePath: { eq: "arquitectura/casa-de-pilatos-1.jpg" }
       ) {
         childImageSharp {
-          fluid(maxWidth: 800, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -130,7 +132,7 @@ const Day = () => {
         relativePath: { eq: "arquitectura/casa-de-pilatos-2.jpg" }
       ) {
         childImageSharp {
-          fluid(maxWidth: 800, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -139,7 +141,7 @@ const Day = () => {
         relativePath: { eq: "arquitectura/casa-de-pilatos-3.jpg" }
       ) {
         childImageSharp {
-          fluid(maxWidth: 800, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -194,42 +196,42 @@ const Day = () => {
       }
       museumFineArtsImg1: file(relativePath: { eq: "cultura/museum-fine-arts-1.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 800, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       museumFineArtsImg2: file(relativePath: { eq: "cultura/museum-fine-arts-2.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 800, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       museumFineArtsImg3: file(relativePath: { eq: "cultura/museum-fine-arts-3.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 800, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       plazaEspanaImg1: file(relativePath: { eq: "cultura/plaza-de-espana-1.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 800, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       plazaEspanaImg2: file(relativePath: { eq: "cultura/plaza-de-espana-2.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 800, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       plazaEspanaImg3: file(relativePath: { eq: "cultura/plaza-de-espana-3.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 800, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -238,7 +240,7 @@ const Day = () => {
         relativePath: { eq: "historia/maria-luisa-1.jpg" }
       ) {
         childImageSharp {
-          fluid(maxWidth: 600, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -247,7 +249,7 @@ const Day = () => {
         relativePath: { eq: "historia/maria-luisa-2.jpg" }
       ) {
         childImageSharp {
-          fluid(maxWidth: 600, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -256,28 +258,28 @@ const Day = () => {
         relativePath: { eq: "historia/maria-luisa-3.jpg" }
       ) {
         childImageSharp {
-          fluid(maxWidth: 600, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       alcazarImg1: file(relativePath: { eq: "historia/real-alcazar-1.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 600, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       alcazarImg2: file(relativePath: { eq: "historia/real-alcazar-2.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 600, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       alcazarImg3: file(relativePath: { eq: "historia/real-alcazar-3.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 600, quality: 90) {
+          fluid(maxWidth: 1000, quality: 90) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -288,6 +290,18 @@ const Day = () => {
   const [currentCard, setCurrentCard] = useState(1)
   const [waypoints, setWaypoints] = useState([])
   const [route, setRoute] = useState([])
+  const [modal, setModal] = useState({
+    open: false,
+    images: null,
+    index: 0
+  })
+
+  // Used in order to delay the count of the last card rendered being the currentCard
+  const dumbRef = useRef(false)
+
+  // Used in order to focus on the modal in order for keyboard keys to be registered automatically 
+  // without having the user click onto the modal 
+  const focusModalRef = useRef(null)
 
   // Returns an object with keys: location (proper name) & stopover
   const properName = locationName => {
@@ -330,6 +344,12 @@ const Day = () => {
   }
 
   useEffect(() => {
+    window.scroll(0, 0)
+
+    setTimeout(() => {
+      dumbRef.current = true;
+    }, 3000)
+
     const barrios = JSON.parse(sessionStorage.getItem("barrios"))
     const arquitectura = JSON.parse(sessionStorage.getItem("arquitectura"))
     const cultura = JSON.parse(sessionStorage.getItem("cultura"))
@@ -337,18 +357,22 @@ const Day = () => {
 
     const pointArray = [];
     
-    pointArray.push(
-      ...Object.keys(barrios).filter(point => barrios[point] === true)
-    )
-    pointArray.push(
-      ...Object.keys(arquitectura).filter(point => arquitectura[point] === true)
-    )
-    pointArray.push(
-      ...Object.keys(cultura).filter(point => cultura[point] === true)
-    )
-    pointArray.push(
-      ...Object.keys(historia).filter(point => historia[point] === true)
-    )
+    try {
+      pointArray.push(
+        ...Object.keys(barrios).filter(point => barrios[point] === true)
+      )
+      pointArray.push(
+        ...Object.keys(arquitectura).filter(point => arquitectura[point] === true)
+      )
+      pointArray.push(
+        ...Object.keys(cultura).filter(point => cultura[point] === true)
+      )
+      pointArray.push(
+        ...Object.keys(historia).filter(point => historia[point] === true)
+      )
+    } catch(err) {
+      window.location.replace("/explore")
+    }
   
     const bestConfig = geneticTSP(pointArray)
 
@@ -372,20 +396,61 @@ const Day = () => {
     setWaypoints(latLongOptimizedRoute)
   }, [])
 
-  useEffect(() => {
-    console.log(currentCard)
-  }, currentCard)
+  const openModal = (images, index) => {
+    // Currently, the modal is isn't visible, and so focus can't be established.
+    // Must set a timeout for the DOM to update for modal to be visible so focus
+    // can take place
+    setTimeout(() => focusModalRef.current.focus(), 0)
+    gsap.from(`.modal`, { top: "40%", opacity: 0.8, duration: 0.8, ease: Power2.easeOut } )
+    setModal({
+      open: true,
+      images: images,
+      index: index
+    })
+  }
 
-  // TO DO;
-  /** 1. Work out the react-scroll library and get it working
-   *      - Scrolling down will switch the 'active' marker; red 
-   *      - Clicking on markers will automatically scroll you to the card
-   * 
-   *  2. Carousel working
-   *  3. Stylize the UI 
-   * 
-   **/
+  const closeModal = () => {
+    setModal({
+      open: false,
+      images: null,
+      index: 0
+    })
+  }
 
+  const nextImage = () => {
+    let nextIndex = modal.index > 1 ? 0 : modal.index + 1
+    setModal(prev => ({
+      ...prev, 
+      index: nextIndex}))
+  }
+
+  const previousImage = () => {
+    let nextIndex = modal.index < 1 ? 2 : modal.index - 1
+    setModal(prev => ({
+      ...prev, 
+      index: nextIndex
+    }))
+  }
+
+  const handleKeyDown = (e) => {
+    e.stopPropagation()
+    switch (e.keyCode) {
+      case 27:
+        closeModal()
+        break
+      case 37:
+        previousImage()
+        break
+      case 39:
+        nextImage()
+        break        
+    }
+  }
+
+  const restartDay = () => {
+    sessionStorage.clear()
+    window.location.replace("/explore")
+  }
 
   return (
     <div id="day">
@@ -396,24 +461,20 @@ const Day = () => {
         </h1>
       </div>
 
-      {
-        waypoints.length !== 0 && (
-        <DirectionsMap
-          cardRefs={refs}
-          currentCard={currentCard}
-          setCurrentCard={setCurrentCard}
-          origin={waypoints[0].location}
-          destination={waypoints[waypoints.length - 1].location}
-          waypoints={waypoints.slice(1, waypoints.length - 1)}
-        />)
-      }
-
       <div className="day-content">
-        {/* 
-          Placeholder gives the illusion that the Map's position: fixed 
-          allows for relative position, rather than absolute positioning
-        */}
-        <div className="day-map-placeholder"/>
+        <div className="day-map-container">
+          {
+            waypoints.length !== 0 && (
+            <DirectionsMap
+              cardRefs={refs}
+              currentCard={currentCard}
+              setCurrentCard={setCurrentCard}
+              origin={waypoints[0].location}
+              destination={waypoints[waypoints.length - 1].location}
+              waypoints={waypoints.slice(1, waypoints.length - 1)}
+            />)
+          }
+        </div>
 
         {
           route.length !== 0 && ( 
@@ -428,15 +489,65 @@ const Day = () => {
                 const location = locationNames[point].replace(", Sevilla", "")
                 
                 return (
-                  <li key={index} ref={refs[`cardRef${index + 1}`]}>
-                    <Card index={index + 1} location={location} images={images} description={summaries[point]}/>
+                  <li key={index} data-key={index} className={"gsap-card"} ref={refs[`cardRef${index + 1}`]}>
+                    <InView threshold={0.8} onChange={(inView, entry) => {
+                      if (dumbRef.current === true) setCurrentCard(index + 1)
+                    }}> 
+                      <Card 
+                        index={index + 1} 
+                        location={location} 
+                        images={images} 
+                        description={summaries[point]}
+                        openModal={openModal}
+                        closeModal={closeModal}
+                      />
+                    </InView>
                   </li>
                 )
               })
             }
           </ul>)
         }
+      </div>
 
+      <div 
+        className={`card-zoom-modal` + (modal.open ? ' modal-open' : '')}
+        onClick={closeModal}
+      >
+        <div className="modal" ref={focusModalRef} tabIndex="0" onKeyDown={e => handleKeyDown(e)} onClick={e => e.stopPropagation()}>
+          {
+            modal.open ?
+            <Img
+              className={"modal-image"}
+              draggable={false}
+              fluid={modal.images[modal.index]}
+              imgStyle={{
+                objectFit: "contain",
+              }}
+            /> 
+              : 
+              null
+          }
+          <button className="modal-close-button" onClick={(e) => {
+            e.stopPropagation()
+            closeModal()
+          }}>
+            <FontAwesomeIcon icon="times" className="modal-close-icon"/>
+          </button>
+          <button className="modal-image-change-button modal-previous-button" onClick={previousImage} />
+          <button className="modal-image-change-button modal-next-button" onClick={nextImage} />
+        </div>
+      </div>
+
+      <div className="day-footer">
+        <div className="day-footer-extro">
+          <h1 className="day-footer-title">
+            I hope that you enjoyed your day in Seville!
+          </h1>
+          <div className="day-footer-restart" onClick={restartDay}>
+            Planning another day? 
+          </div>
+        </div>
       </div>
     </div>
   )

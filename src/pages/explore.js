@@ -1,9 +1,12 @@
 // Imports
 import React, { useState, useEffect, useRef } from "react"
+
+// Libraries
 import { useSpring, animated } from "react-spring"
 import { interpolate } from "flubber"
 import { Transition, CSSTransition } from "react-transition-group"
 import { gsap } from "gsap"
+import { throttle } from "lodash"
 
 // Pages Rendered
 import Barrios from "../components/explore/barrios"
@@ -79,7 +82,6 @@ const Explore = () => {
       tabsRef.current.childNodes.forEach(button => {
         button.setAttribute("disabled", "disabled")
       })
-      // nextRef.current.setAttribute("disabled", true)
 
       setContentMounted(false) // Triggers an unmount of the "Content" div
       setActivated(true) // Animates the red bar to morph to the next tab
@@ -103,7 +105,6 @@ const Explore = () => {
         tabsRef.current.childNodes.forEach(button =>
           button.removeAttribute("disabled")
         )
-        // nextRef.current.removeAttribute("disabled")
       }, 1600)
     }
   }
@@ -203,34 +204,3 @@ const Explore = () => {
 }
 
 export default Explore
-
-/**
- * To Do Thursday:
- *
- *  EXPLORE PAGE
- *  1. Make sure the user picks at least one option before giving them the ability
- *     to hit the "next" or "done" button
- *  2. Allow the user to go back to a previous page if the user advances to the
- *     next page
- *       - Tabs will animate in as you progress through the pages
- */
-
-/**
- * All of the choices will be saved onto some kind of object named "choices"
- * wherein the "done" button will take you to a new page that has the "done"
- * object passed as a prop.
- *
- * Create a loading page in order to compile all of the photos?
- * Write a function to load onto the necessary images?
- * Create some kind of algorithm in order to place photos on page automatically?
- *
- * New page is called " visit " (for now). Visit page will run a traveling salesman
- * algorithm to determine the best route
- *
- * Google Maps will be integrated into the Visit page as well as detailed explanations
- * of each of the site the user has chosen
- *
- * Scrolling all the way down the google maps will be credits as well as a
- * "Stay another day?" button, which will take you back to the home page to restart
- * your journey
- * */

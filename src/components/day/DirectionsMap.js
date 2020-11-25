@@ -1,22 +1,24 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
+
+// Libraries
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   GoogleMap,
-  DirectionsService,
   DirectionsRenderer,
   useLoadScript,
   Marker
 } from "@react-google-maps/api"
+
+// Utils
+import "../../utils/fontAwesome.js"
+
+// Styles
 import MapStyle from "../../styles/SevilleSpainMap"
 
-import { Link, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
-
+// Images
 import yellowMarker from "./yellow-circle.png"
 import redMarker from "./red-circle.png"
 
-const center = {
-  lat: 37.389091,
-  lng: -5.984459,
-}
 
 const options = {
   styles: MapStyle,
@@ -47,6 +49,8 @@ const redMarkerObject = {
 
 const DirectionsMap = ({ cardRefs, currentCard, setCurrentCard, origin, destination, waypoints }) => {
   const [response, setResponse] = useState(null);
+  const [question, setQuestion] = useState(false)
+
   const { isLoaded, LoadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyAc8YDdPQeS05YQbUPqdUQS7T2nbaXmSsc",
     libraries: libraries,
@@ -62,86 +66,101 @@ const DirectionsMap = ({ cardRefs, currentCard, setCurrentCard, origin, destinat
   if (LoadError) return "Error Loading Maps"
   if (!isLoaded) return "Loading Map"
 
-  const directionsCB = (output) => {
-    // This prevents rerenderings from setResponse thereby creating an over_query_limit error
-    // This is an infinite loop... Rerender from setResponse => callback is called => directionsCB => setResponse
-    if (response !== null) {
-      return
+  const directionsCB = (result, status) => {
+    console.log("directionsCB is called")
+    if (status === "OK") {
+      console.log("directionsCB is called and response is SET ")
+      setResponse(result)
     }
-
-    if (output !== null) {
-      if (output.status === "OK") {
-        setResponse(output)
-      } else {
-        console.log("response: ", output)
-      }
-    }
-  }
-
-  // Placeholder for 
-  const labelClick = (index) => {
-    console.log(`current card is now ${index}`)
-    setCurrentCard(index)
   }
 
   const scrollTo = (index) => {
+    let offSetLength = window.innerHeight * 0.13
     setCurrentCard(index)
-    window.scrollTo({left: 0, top: cardRefs[`cardRef${index}`].current.offsetTop - 100, behavior: 'smooth'})
+    window.scrollTo({left: 0, top: cardRefs[`cardRef${index}`].current.offsetTop - offSetLength, behavior: 'smooth'})
+  }
+
+  if (response === null) {
+    console.log("DirectionsService is used")
+    const google = window.google;
+    const directionsService = new google.maps.DirectionsService()
+    directionsService.route(directionsOption, directionsCB)
   }
 
   return (
-    <GoogleMap
-      id={"googleMaps"}
-      options={options}
-    >
-      {
-          <DirectionsService
-            options={directionsOption}
-            callback={directionsCB}
-          />
-      }
+    <>
+      <div className="google-maps-question" onClick={() => setQuestion(prev => !prev)}>
+        {
+          (question ? 
+            <FontAwesomeIcon className="google-maps-question-icon" icon="times" />
+          :
+            <FontAwesomeIcon className="google-maps-question-icon" icon="question-circle" />
+          )
+        }
+      </div>
 
       {
-        response !== null && (
-          <DirectionsRenderer
-            options={{
-              directions: response,
-              suppressMarkers: true
-            }}
-          />
-        )
-      }
-      
-      {
-        response !== null && (
-          response.routes[0].legs.map((leg, index) => {
-            return (
-              <Marker
-                key={index}
-                position={leg.start_location}
-                label={(index + 1).toString()}
-                onClick={() => scrollTo(index + 1)}
-                icon={currentCard === index + 1 ? redMarkerObject : yellowMarkerObject}
-                zIndex={currentCard === index + 1 ? 1 : -1}
-              />
-            )
-          })
-        )
-      }
-    
-      {
-        response !== null && (
-          <Marker
-            position={response.routes[0].legs[response.routes[0].legs.length-1].end_location}
-            label={(response.routes[0].legs.length + 1).toString()}
-            onClick={() => scrollTo(response.routes[0].legs.length + 1)}
-            icon={currentCard === response.routes[0].legs.length + 1 ? redMarkerObject : yellowMarkerObject}
-            zIndex={currentCard === response.routes[0].legs.length + 1 ? 1 : -1}
-          />
+        (question ? 
+          <div className="google-maps-question-helper">
+            <div>
+              Directions wonky? Might be 
+              <a target="_blank" href="https://softjourn.com/blog/article/heuristic-programming"> heuristics </a> 
+              at play. Give the page a <a href="/day">refresh</a> in order to 
+              recalculate a new route. The path generated uses a genetic algorithm
+              in order to solve for a traveling salesman problem and so the most optimal
+              route might not always be given due to probabilities inherently built into 
+              the algorithm.
+            </div>
+          </div>
+        :
+          <GoogleMap
+            id={"googleMaps"}
+            options={options}
+          >
+            {
+              response !== null && (
+                <DirectionsRenderer
+                  options={{
+                    directions: response,
+                    suppressMarkers: true
+                  }}
+                />
+              )
+            }
+            
+            {
+              response !== null && (
+                response.routes[0].legs.map((leg, index) => {
+                  return (
+                    <Marker
+                      key={index}
+                      position={leg.start_location}
+                      label={(index + 1).toString()}
+                      onClick={() => scrollTo(index + 1)}
+                      icon={currentCard === index + 1 ? redMarkerObject : yellowMarkerObject}
+                      zIndex={currentCard === index + 1 ? 1 : -1}
+                    />
+                  )
+                })
+              )
+            }
+          
+            {
+              response !== null && (
+                <Marker
+                  position={response.routes[0].legs[response.routes[0].legs.length-1].end_location}
+                  label={(response.routes[0].legs.length + 1).toString()}
+                  onClick={() => scrollTo(response.routes[0].legs.length + 1)}
+                  icon={currentCard === response.routes[0].legs.length + 1 ? redMarkerObject : yellowMarkerObject}
+                  zIndex={currentCard === response.routes[0].legs.length + 1 ? 1 : -1}
+                />
+              )
+            }
+          </GoogleMap>
         )
       }
 
-    </GoogleMap>
+    </>
   )
 }
 

@@ -7,7 +7,7 @@ const locationNames = {
   catedralSevilla: "Cetedral de Sevilla, Sevilla",
   setas: "Las Setas De Sevilla, Sevilla",
   mariaLuisa: "Parque de María Luisa, Sevilla",
-  alcazar: "Royal Alcázar of Seville, Sevilla",
+  alcazar: "37.383069, -5.990140",
   museumFineArts: "Museo de Bellas Artes de Sevilla, Sevilla",
   plazaEspana: "Plaza de España, Sevilla",
 }

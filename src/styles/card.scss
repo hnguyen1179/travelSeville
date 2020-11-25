@@ -1,7 +1,10 @@
 // Colors 
+
+$offWhite: #f8f8ff;
 $white: #fff;
 $black: #000;
 $red: #aa151b;
+$white: #fff;
 $yellow: #f1bf00;
 
 $titleFont: 'Romana';
@@ -9,52 +12,141 @@ $bodyFont: 'Apercu';
 
 .card-container {
   width: 50%;
-  // border: 1px solid red;
 
-  :last-child {
-    margin-bottom: 4rem;
-  }
-}
+  .gsap-card {
 
-.card {
-  margin: 2rem;
-  padding: 1rem;
-  min-height: 75vh;
-
-  // border: 1px dotted red;
-}
-
-.card-title {
-  text-align: center;
-  font-size: clamp(2.4rem, 3vw, 3.6rem);
-  font-family: $titleFont;
-}
-
-.card-body {
-  display: flex;
-}
-
-.card-carousel-container {
-  width: calc(20vw + 4rem);
-  margin: auto; 
-  overflow: hidden;
-
-  .card-carousel-slide {
-    display: flex;
-    align-items: center;
-    min-height: 60vh;
-    background-color: rgba(128, 128, 128, 0.192);
-  
-    .card-image {
-      width: 20vw;
-      margin: 2rem;
+    &:last-child {
+      margin-bottom: 9rem;
     }
   }
 }
 
+.card {
+  margin: 4rem;
+  padding: 4rem;
+  min-height: 75vh;
+  min-width: 50vw;
+  background-color: $yellow;
+}
+
+.card-1 {
+  margin-top: 2rem;
+}
+
+.card-body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-carousel-container {
+  width: calc(20vw + 4rem);
+  min-height: 60vh;
+  margin: auto; 
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+
+  .card-carousel-slide {
+    display: flex;
+    width: 100%;
+    min-height: 60vh;
+    align-items: center;
+
+    .card-carousel-image-container {
+      margin: 2rem;
+
+      .card-image {
+        width: 20vw;
+        border: 0.25rem solid white;
+      }
+    }
+
+  }
+}
+
 .card-description {
-  width: 30%;
+  width: 40%;
   font-size: clamp(1.4rem, 1.3vw, 3rem);
-  // font-size: 1.2vw;
   font-family: $bodyFont;
+  padding: 2rem;
+  margin-left: 2rem;
+
+  .card-title {
+    text-align: left;
+    font-size: clamp(2.4rem, 3vw, 5rem);
+    font-family: $titleFont;
+    padding: 0;
+    margin: 0;
+    color: $red;
+  }
+}
+
+.card-carousel-image-container {
+  cursor: pointer;
+}
+
+.card-arrow {
+  background-color: white;
+  width: 2.4vw !important;
+  height: 2.4vw !important;
+  z-index: 4;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: black;
+  border-radius: 50%;
+
+  &:hover {
+    transition: 300ms;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    border: 1px solid rgba(128, 128, 128, 0);
+  }
+}
+
+.card-click-left {
+  left: -2.9vw;
+  padding-right: 0.25rem;
+}
+
+.card-click-right {
+  right: -2.9vw;
+  padding-left: 0.25rem;
+}
+
+.card-carousel-overlay-container {
+  margin: auto;
+  position: relative;
+}
+
+.card-carousel-container-below {
+  width: calc(20vw + 4rem);
+  min-height: 62vh;
+  position: absolute;
+  background-color: $red;
+  top: 0;
+}
+
+.card-dots {
+  display: flex;
+  position: absolute;
+  bottom: 1vh;
+  left: 50%;
+  transform: translateX(-50%);
+
+  .dot{
+    height: 1vh;
+    width: 1vh;
+    border-radius: 50%;
+    margin-right: 1rem;
+    background-color: white;
+    transition: 500ms;
+  }
+
+  .active {
+    transition: 500ms;
+    transform: scale(1.5);
+    background-color: rgba(0, 0, 0, 0.685);
+  }
 }

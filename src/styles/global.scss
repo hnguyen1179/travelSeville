@@ -14,6 +14,11 @@ body, html {
     list-style-type: none;
 }
 
+.tl-edges {
+  overflow: visible !important;
+  overflow-x: visible !important;
+}
+
 #base {
     height: 100vh;
     width: 100vw;

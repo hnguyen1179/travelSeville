@@ -1,6 +1,5 @@
-import React, { useState, useRef, useEffect, useLayoutEffect } from "react"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { TimelineLite, Power2 } from "gsap"
+import React, { useState, useRef, useEffect } from "react"
+import { TimelineLite } from "gsap"
 import CSSRulePlugin from "gsap/CSSRulePlugin"
 
 // Components
@@ -57,7 +56,7 @@ const Instructions = () => {
       window.location.reload()
     }
 
-  }, [])
+  }, [titleUnderline])
 
   const chevronType = () => {
     switch (currentSection) {
@@ -67,6 +66,8 @@ const Instructions = () => {
         return "chevron chevron-one"
       case "three":
         return "chevron chevron-three"
+      default:
+        return
     }
   }
 

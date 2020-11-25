@@ -543,6 +543,7 @@ $bodyFont: "Apercu";
           border: 5px solid rgba(0, 0, 0, 0);
           transition: 200ms;
           position: relative;
+          cursor: pointer;
 
           &:hover {
             transition: 200ms;

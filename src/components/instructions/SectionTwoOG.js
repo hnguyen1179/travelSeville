@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from "react"
+import React, { useState, useRef, useLayoutEffect } from "react"
+
+// Libaries
 import { TimelineLite, Power2 } from "gsap"
 import CSSRulePlugin from "gsap/CSSRulePlugin"
 import { Transition } from "react-transition-group"
-
-// Components
-import SevilleSpainMap from "./SevilleSpainMap"
+import { TweenMax } from "gsap/gsap-core"
 
 // Style
 import "../../styles/instructions.scss"
-import { TweenMax } from "gsap/gsap-core"
 
 const SectionTwo = () => {
   // States
@@ -208,7 +207,6 @@ const SectionTwo = () => {
           <section ref={itemThreeRef} className="blocks block-three">
             <figure />
             <map className="seville-spain-map-container" id="seville-spain-map-container">
-              {/* <SevilleSpainMap /> */}
               <img
                 id="google-maps-placeholder"
                 src={require("../../images/instructions/google-maps-placeholder.png")}

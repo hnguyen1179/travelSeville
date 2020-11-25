@@ -27,9 +27,9 @@ class Configuration {
   }
 }
 
+// Randomly shuffles an array using the Fisher-Yates implementation
+// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/31054543#31054543
 const shuffle = array => {
-  // Randomly shuffles an array using the Fisher-Yates implementation
-  // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/31054543#31054543
   let currentIndex = array.length
   let temporaryValue
   let randomIndex
@@ -52,10 +52,9 @@ const swap = (array, indexOne, indexTwo) => {
   array[indexTwo] = temporary
 }
 
+// Takes in an array of Configuration objects
+// Returns a Configuration object from a list based on probability
 const pickOne = array => {
-  // Takes in an array of Configuration objects
-  // Returns a Configuration object from a list based on probability
-
   const randomNumber = Math.random() * 100
   let cumulativeProbability = 0
 
@@ -91,10 +90,10 @@ const crossOver = (points, configurationOne, configurationTwo) => {
   return new Configuration(points, newOrder)
 }
 
+// Takes in an order array from a Configuration object
+// Randomly swaps two values in the array
+// Mutation rate is used for simulated annealing
 const mutate = (configuration, mutationRate) => {
-  // Takes in an order array from a Configuration object
-  // Randomly swaps two values in the array
-  // Mutation rate is used for simulated annealing
   const order = configuration.order
   for (let i = 0; i < order.length; i++) {
     if (Math.random() * 100 < mutationRate) {
@@ -105,8 +104,8 @@ const mutate = (configuration, mutationRate) => {
   }
 }
 
+// Takes in an array of Configuration objects and normalizes their fitness
 const normalizeFitness = array => {
-  // Takes in an array of Configuration objects and normalizes their fitness
   let totalFitness = 0
 
   for (let i = 0; i < array.length; i++) {
@@ -118,7 +117,7 @@ const normalizeFitness = array => {
   }
 }
 
-
+// Genetic Traveling Salesman Problem
 const geneticTSP = points => {
   const numberOfGenerations = 1000
   const sizeOfPopulation = 500
@@ -141,11 +140,12 @@ const geneticTSP = points => {
     generations.push(new Configuration(points, shuffledOrder))
   }
 
+  // Normalizing the fitness scores of each generation
   normalizeFitness(generations)
 
+  // Populate new generations based on the fitness probabilites of the previous generations,
+  // mutating them and crossing them over before assigning to a new generations
   while (currentGeneration < numberOfGenerations) {
-    // Populate a new generations based on the probabilites of the previous generations,
-    // mutating them and crossing them over before assigning to a new generations
     for (let i = 0; i < generations.length; i++) {
       const randomConfigurationOne = pickOne(generations)
       const randomConfigurationTwo = pickOne(generations)
