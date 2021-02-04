@@ -89,7 +89,15 @@ const Barrios = ({ nextPath, disableNext }) => {
           <div className="image-grid-1">
             <div
               className="image-container"
+              role="button"
+              tabIndex="0"
               onClick={() => {
+                setImages(prev => ({
+                  ...initialImages,
+                  santaCruz: !prev.santaCruz,
+                }))
+              }}
+              onKeyDown={() => {
                 setImages(prev => ({
                   ...initialImages,
                   santaCruz: !prev.santaCruz,
@@ -107,7 +115,12 @@ const Barrios = ({ nextPath, disableNext }) => {
             </div>
             <div
               className="image-container"
+              role="button"
+              tabIndex="0"
               onClick={() => {
+                setImages(prev => ({ ...initialImages, centro: !prev.centro }))
+              }}
+              onKeyDown={() => {
                 setImages(prev => ({ ...initialImages, centro: !prev.centro }))
               }}
             >
@@ -124,7 +137,12 @@ const Barrios = ({ nextPath, disableNext }) => {
           <div className="image-grid-2">
             <div
               className="image-container"
+              role="button"
+              tabIndex="0"
               onClick={() => {
+                setImages(prev => ({ ...initialImages, arenal: !prev.arenal }))
+              }}
+              onKeyDown={() => {
                 setImages(prev => ({ ...initialImages, arenal: !prev.arenal }))
               }}
             >
@@ -139,7 +157,15 @@ const Barrios = ({ nextPath, disableNext }) => {
             </div>
             <div
               className="image-container"
+              role="button"
+              tabIndex="0"
               onClick={() => {
+                setImages(prev => ({
+                  ...initialImages,
+                  macarena: !prev.macarena,
+                }))
+              }}
+              onKeyDown={() => {
                 setImages(prev => ({
                   ...initialImages,
                   macarena: !prev.macarena,

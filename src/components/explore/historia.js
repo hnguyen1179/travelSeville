@@ -74,7 +74,12 @@ const Historia = ({ disableNext }) => {
         <div className="images">
           <div
             className="image-container"
+            role="button"
+            tabIndex="0"
             onClick={() => {
+              setImages(prev => ({ ...prev, alcazar: !prev.alcazar }))
+            }}
+            onKeyDown={() => {
               setImages(prev => ({ ...prev, alcazar: !prev.alcazar }))
             }}
           >
@@ -89,7 +94,12 @@ const Historia = ({ disableNext }) => {
           </div>
           <div
             className="image-container-maria"
+            role="button"
+            tabIndex="0"
             onClick={() => {
+              setImages(prev => ({ ...prev, mariaLuisa: !prev.mariaLuisa }))
+            }}
+            onKeyDown={() => {
               setImages(prev => ({ ...prev, mariaLuisa: !prev.mariaLuisa }))
             }}
           >

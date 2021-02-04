@@ -343,7 +343,7 @@ const Day = () => {
 
       return output
     }
-    
+
     window.scroll(0, 0)
 
     setTimeout(() => {
@@ -514,7 +514,10 @@ const Day = () => {
 
       <div 
         className={`card-zoom-modal` + (modal.open ? ' modal-open' : '')}
+        role="button"
+        tabIndex="0"
         onClick={closeModal}
+        onKeyDown={closeModal}
       >
         <div className="modal" ref={focusModalRef} role="button" tabIndex="0" onKeyDown={e => handleKeyDown(e)} onClick={e => e.stopPropagation()}>
           {
@@ -546,7 +549,13 @@ const Day = () => {
           <h1 className="day-footer-title">
             I hope that you enjoyed your day in Seville!
           </h1>
-          <div className="day-footer-restart" onClick={restartDay}>
+          <div 
+            className="day-footer-restart" 
+            role="button"
+            tabIndex="0"
+            onClick={restartDay}
+            onKeyDown={restartDay}
+          >
             Planning another day? 
           </div>
         </div>

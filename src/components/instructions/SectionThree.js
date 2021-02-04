@@ -87,13 +87,19 @@ const SectionThree = ({ currentSection, chevronType }) => {
         
             <div className="how-to-image-cover">
               <div id="how-to-image-cover" />
-              <img
-                alt="Please Click On Me"
-                className={clicked ? "clicked" : ""}
-                draggable={false}
+              <div
+                role="button"
+                tabIndex="0"
                 onClick={onClick}
-                src={require("../../images/instructions/how-to-image.jpg")}
-              />
+                onKeyDown={onClick}
+              >
+                <img
+                  alt="Spanish Homes"
+                  className={clicked ? "clicked" : ""}
+                  draggable={false}
+                  src={require("../../images/instructions/how-to-image.jpg")}
+                />
+              </div>
             </div>
   
 

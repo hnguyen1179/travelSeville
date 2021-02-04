@@ -70,7 +70,12 @@ const Cultura = ({ nextPath, disableNext }) => {
         <div className="images">
           <div
             className="image-container-plaza"
+            role="button"
+            tabIndex="0"
             onClick={() => {
+              setImages(prev => ({ ...prev, plazaEspana: !prev.plazaEspana }))
+            }}
+            onKeyDown={() => {
               setImages(prev => ({ ...prev, plazaEspana: !prev.plazaEspana }))
             }}
           >
@@ -85,7 +90,12 @@ const Cultura = ({ nextPath, disableNext }) => {
           </div>
           <div
             className="image-container"
+            role="button"
+            tabIndex="0"
             onClick={() => {
+              setImages(prev => ({ ...prev, museumFineArts: !prev.museumFineArts }))
+            }}
+            onKeyDown={() => {
               setImages(prev => ({ ...prev, museumFineArts: !prev.museumFineArts }))
             }}
           >

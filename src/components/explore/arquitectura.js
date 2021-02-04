@@ -88,7 +88,12 @@ const Arquitectura = ({ nextPath, disableNext }) => {
           <div className="image-grid-1">
             <div
               className="image-container"
+              role="button"
+              tabIndex="0"
               onClick={() => {
+                setImages(prev => ({ ...prev, pilatos: !prev.pilatos }))
+              }}
+              onKeyDown={() => {
                 setImages(prev => ({ ...prev, pilatos: !prev.pilatos }))
               }}
             >
@@ -105,7 +110,12 @@ const Arquitectura = ({ nextPath, disableNext }) => {
           <div className="image-grid-2">
             <div
               className="image-container"
+              role="button"
+              tabIndex="0"
               onClick={() => {
+                setImages(prev => ({ ...prev, catedralSevilla: !prev.catedralSevilla }))
+              }}
+              onKeyDown={() => {
                 setImages(prev => ({ ...prev, catedralSevilla: !prev.catedralSevilla }))
               }}
             >
@@ -120,7 +130,12 @@ const Arquitectura = ({ nextPath, disableNext }) => {
             </div>
             <div
               className="image-container-setas"
+              role="button"
+              tabIndex="0"
               onClick={() => {
+                setImages(prev => ({ ...prev, setas: !prev.setas }))
+              }}
+              onKeyDown={() => {
                 setImages(prev => ({ ...prev, setas: !prev.setas }))
               }}
             >
