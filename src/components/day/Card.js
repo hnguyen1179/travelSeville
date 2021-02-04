@@ -56,7 +56,13 @@ const Card = ({ index, location, images, description, openModal }) => {
                 {
                   images.map((image, index) => {
                     return (
-                      <div key={index} className={"card-carousel-image-container"} onClick={debounce((e) => imageClick(e, index), 1000, { 'leading': true, 'trailing': false })}>
+                      <div 
+                        role="button" 
+                        tabIndex="0" key={index} 
+                        className={"card-carousel-image-container"} 
+                        onClick={debounce((e) => imageClick(e, index), 1000, { 'leading': true, 'trailing': false })}
+                        onKeyDown={debounce((e) => imageClick(e, index), 1000, { 'leading': true, 'trailing': false })}
+                      >
                         <Img
                           className={"card-image"}
                           draggable={false}
@@ -84,7 +90,7 @@ const Card = ({ index, location, images, description, openModal }) => {
               {
                 images.map((image, index) => {
                   return (
-                    <div className={currentPicture === index ? 'dot active' : 'dot'}/>
+                    <div key={index} className={currentPicture === index ? 'dot active' : 'dot'}/>
                   )
                 })
               }

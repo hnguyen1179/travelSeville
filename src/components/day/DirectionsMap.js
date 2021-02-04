@@ -86,7 +86,13 @@ const DirectionsMap = ({ cardRefs, currentCard, setCurrentCard, origin, destinat
 
   return (
     <>
-      <div className="google-maps-question" onClick={() => setQuestion(prev => !prev)}>
+      <div 
+        role="button" 
+        tabIndex="0" 
+        className="google-maps-question" 
+        onClick={() => setQuestion(prev => !prev)}
+        onKeyDown={() => setQuestion(prev => !prev)}
+      >
         {
           (question ? 
             <FontAwesomeIcon className="google-maps-question-icon" icon="times" />
@@ -101,7 +107,7 @@ const DirectionsMap = ({ cardRefs, currentCard, setCurrentCard, origin, destinat
           <div className="google-maps-question-helper">
             <div>
               Directions wonky? Might be 
-              <a target="_blank" href="https://softjourn.com/blog/article/heuristic-programming"> heuristics </a> 
+              <a target="_blank" rel="noreferrer" href="https://softjourn.com/blog/article/heuristic-programming"> heuristics </a> 
               at play. Give the page a <a href="/day">refresh</a> in order to 
               recalculate a new route. The path generated uses a genetic algorithm
               in order to solve for a traveling salesman problem and so the most optimal

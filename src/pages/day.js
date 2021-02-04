@@ -322,16 +322,6 @@ const Day = () => {
     return bestConfig
   }
 
-  // Takes in an array of locations and returns an array of coordinates 
-  const convertToLatLong = (bestConfig) => {
-    let output = []
-    for (let i = 0; i < bestConfig.length; i++) {
-      output.push(properName(bestConfig[i]))
-    }
-
-    return output
-  }
-
   const refs = {
     cardRef1: useRef(null),
     cardRef2: useRef(null),
@@ -344,6 +334,16 @@ const Day = () => {
   }
 
   useEffect(() => {
+    // Takes in an array of locations and returns an array of coordinates 
+    const convertToLatLong = (bestConfig) => {
+      let output = []
+      for (let i = 0; i < bestConfig.length; i++) {
+        output.push(properName(bestConfig[i]))
+      }
+
+      return output
+    }
+    
     window.scroll(0, 0)
 
     setTimeout(() => {
@@ -444,6 +444,8 @@ const Day = () => {
       case 39:
         nextImage()
         break        
+      default:
+        break
     }
   }
 
@@ -514,7 +516,7 @@ const Day = () => {
         className={`card-zoom-modal` + (modal.open ? ' modal-open' : '')}
         onClick={closeModal}
       >
-        <div className="modal" ref={focusModalRef} tabIndex="0" onKeyDown={e => handleKeyDown(e)} onClick={e => e.stopPropagation()}>
+        <div className="modal" ref={focusModalRef} role="button" tabIndex="0" onKeyDown={e => handleKeyDown(e)} onClick={e => e.stopPropagation()}>
           {
             modal.open ?
             <Img
@@ -534,8 +536,8 @@ const Day = () => {
           }}>
             <FontAwesomeIcon icon="times" className="modal-close-icon"/>
           </button>
-          <button className="modal-image-change-button modal-previous-button" onClick={previousImage} />
-          <button className="modal-image-change-button modal-next-button" onClick={nextImage} />
+          <button aria-label="Previous image" className="modal-image-change-button modal-previous-button" onClick={previousImage} />
+          <button aria-label="Next image" className="modal-image-change-button modal-next-button" onClick={nextImage} />
         </div>
       </div>
 

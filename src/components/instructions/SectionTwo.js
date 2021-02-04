@@ -113,6 +113,7 @@ const SectionTwo = () => {
             <div id="block-one-image-cover">
             </div>
             <img
+              alt="Spain Square"
               draggable={false}
               src={require("../../images/instructions/seville-history-2.jpg")}
             />
@@ -138,11 +139,6 @@ const SectionTwo = () => {
           >
             <div id="block-three-image-cover" />
             <SevilleSpainMap />
-            {/* <img
-              id="google-maps-placeholder"
-              src={require("../../images/instructions/google-maps-placeholder.png")}
-              alt="google maps"
-            /> */}
           </map>
           <aside className="block-three-aside">
             <div id="block-three-aside-cover" />
@@ -159,6 +155,7 @@ const SectionTwo = () => {
           <div className="block-four-image">
             <div id="block-four-image-cover" />
             <img
+              alt="Spanish Cafe"
               draggable={false}
               src={require("../../images/instructions/seville-history-3.jpg")}
             />
@@ -178,6 +175,7 @@ const SectionTwo = () => {
           <div className="block-five-image">
             <div id="block-five-image-cover" />
             <img
+              alt="Spanish Plaza"
               draggable={false}
               src={require("../../images/instructions/seville-history-1.jpg")}
             />
@@ -196,6 +194,7 @@ const SectionTwo = () => {
           <div className="block-six-image">
             <div id="block-six-image-cover" />
             <img
+              alt="Game of Thrones Scene"
               draggable={false}
               src={require("../../images/instructions/seville-history-4.jpeg")}
             />

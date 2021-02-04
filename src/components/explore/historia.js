@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useStaticQuery, graphql } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
@@ -41,8 +41,6 @@ const Historia = ({ disableNext }) => {
       initialImages
     )
   )
-
-  const nextRef = useRef(null)
 
   useEffect(() => {
     sessionStorage.setItem('historia', JSON.stringify(images))
