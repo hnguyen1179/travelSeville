@@ -31,7 +31,7 @@ const Instructions = () => {
     const firstBreak = height() * 0.0074
     const secondBreak = height() - (window.innerHeight * 2) + (window.innerHeight * 0.03)
 
-    if (thirdSectionRef.current.getBoundingClientRect().top <= 0) {
+    if (thirdSectionRef.current.getBoundingClientRect().top <= 10) {
       setCurrentSection("three")
     } else if (window.scrollY < firstBreak || window.scrollY > secondBreak) {
       setCurrentSection("one")
@@ -44,7 +44,7 @@ const Instructions = () => {
   useEffect(() => {    
     if (sessionStorage.getItem("reload")) {
       const tl = new TimelineLite()
-  
+      
       tl
         .delay(0.5)
         .from(".section-one > .content div", { height: 0, stagger: 0.3, duration: 0.8 })

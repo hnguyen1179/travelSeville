@@ -6,7 +6,7 @@ import Img from "gatsby-image"
 
 import "../../styles/historia.scss"
 
-const Historia = ({ nextPath }) => {
+const Historia = ({ disableNext }) => {
   const data = useStaticQuery(graphql`
     query {
       mariaLuisaImage: file(
@@ -107,16 +107,20 @@ const Historia = ({ nextPath }) => {
         </div>
       </main>
       
-      <AniLink
-        cover
-        to="/day"
-        direction="left"
-        duration={2}
-        bg="#f1bf00"
-        className={"next-page" + checkNext()}
-      >
-        done
-      </AniLink>
+      {
+        disableNext ? 
+        null :
+        <AniLink
+          cover
+          to="/day"
+          direction="left"
+          duration={2}
+          bg="#f1bf00"
+          className={"next-page" + checkNext()}
+        >
+          done
+        </AniLink>
+      }
     </div>
   )
 }

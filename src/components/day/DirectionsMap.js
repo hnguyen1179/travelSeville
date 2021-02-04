@@ -52,7 +52,7 @@ const DirectionsMap = ({ cardRefs, currentCard, setCurrentCard, origin, destinat
   const [question, setQuestion] = useState(false)
 
   const { isLoaded, LoadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyAc8YDdPQeS05YQbUPqdUQS7T2nbaXmSsc",
+    googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
     libraries: libraries,
   })
 
@@ -67,9 +67,7 @@ const DirectionsMap = ({ cardRefs, currentCard, setCurrentCard, origin, destinat
   if (!isLoaded) return "Loading Map"
 
   const directionsCB = (result, status) => {
-    console.log("directionsCB is called")
     if (status === "OK") {
-      console.log("directionsCB is called and response is SET ")
       setResponse(result)
     }
   }
@@ -81,7 +79,6 @@ const DirectionsMap = ({ cardRefs, currentCard, setCurrentCard, origin, destinat
   }
 
   if (response === null) {
-    console.log("DirectionsService is used")
     const google = window.google;
     const directionsService = new google.maps.DirectionsService()
     directionsService.route(directionsOption, directionsCB)

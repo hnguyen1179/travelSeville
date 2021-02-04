@@ -5,7 +5,7 @@ import Img from "gatsby-image"
 
 import "../../styles/barrios.scss"
 
-const Barrios = ({ nextPath }) => {
+const Barrios = ({ nextPath, disableNext }) => {
   const data = useStaticQuery(graphql`
     query {
       centroImg: file(
@@ -167,10 +167,14 @@ const Barrios = ({ nextPath }) => {
           </div>
         </div>
       </main>
-
-      <button ref={nextRef} className={"next-page" + checkNext()} onClick={clickNextPath}>
-        next
-      </button>
+      
+      {
+        disableNext ? 
+        null :
+        <button ref={nextRef} className={"next-page" + checkNext()} onClick={clickNextPath}>
+          next
+        </button>
+      }
     </div>
   )
 }

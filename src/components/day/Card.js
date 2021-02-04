@@ -34,7 +34,7 @@ const Card = ({ index, location, images, description, openModal }) => {
     setCurrentPicture(currentPicture + 1)    
   }
 
-  // Timer is a ref set outside of the debouncer fx because the setCurrentPicture
+  // Timer is a ref set outside of the function because the setCurrentPicture
   // call will rerender the function causing the timer to reset to 0, which will
   // allow the function to be immediatelly called again. The way the lodash debouncer
   // works relies on a functional scoped timer, which gets resetted in our case due 

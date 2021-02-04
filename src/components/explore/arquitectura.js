@@ -5,7 +5,7 @@ import Img from "gatsby-image"
 
 import "../../styles/arquitectura.scss"
 
-const Arquitectura = ({ nextPath }) => {
+const Arquitectura = ({ nextPath, disableNext }) => {
   const data = useStaticQuery(graphql`
     query {
       pilatosImg: file(
@@ -137,9 +137,13 @@ const Arquitectura = ({ nextPath }) => {
         </div>
       </main>
 
-      <button ref={nextRef} className={"next-page-arquitectura" + checkNext()} onClick={clickNextPath}>
-        next
-      </button>
+      {
+        disableNext ? 
+        null :
+        <button ref={nextRef} className={"next-page-arquitectura" + checkNext()} onClick={clickNextPath}>
+          next
+        </button>
+      }
     </div>
   )
 }

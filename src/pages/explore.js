@@ -6,7 +6,6 @@ import { useSpring, animated } from "react-spring"
 import { interpolate } from "flubber"
 import { Transition, CSSTransition } from "react-transition-group"
 import { gsap } from "gsap"
-import { throttle } from "lodash"
 
 // Pages Rendered
 import Barrios from "../components/explore/barrios"
@@ -28,6 +27,7 @@ const Explore = () => {
   const [width, setWidth] = useState(window.innerWidth)
   const [height, setHeight] = useState(window.innerHeight)
   const [contentMounted, setContentMounted] = useState(true)
+  const [disableNext, setDisableNext] = useState(false)
 
   const tabsRef = useRef()
 
@@ -76,6 +76,8 @@ const Explore = () => {
   )
 
   const nextPath = nextTabIndex => {
+    setDisableNext(true)
+
     if (currentTab === nextTabIndex) {
       // Do nothing; same tab
     } else {
@@ -105,6 +107,7 @@ const Explore = () => {
         tabsRef.current.childNodes.forEach(button =>
           button.removeAttribute("disabled")
         )
+        setDisableNext(false)
       }, 1600)
     }
   }
@@ -132,7 +135,7 @@ const Explore = () => {
           unmountOnExit={true}
           onExited={() => setContentMounted(true)}
         >
-          <Barrios nextPath={nextPath} />
+          <Barrios nextPath={nextPath} disableNext={disableNext} />
         </CSSTransition>
 
         <CSSTransition
@@ -142,7 +145,7 @@ const Explore = () => {
           unmountOnExit={true}
           onExited={() => setContentMounted(true)}
         >
-          <Arquitectura nextPath={nextPath} />
+          <Arquitectura nextPath={nextPath} disableNext={disableNext} />
         </CSSTransition>
 
         <CSSTransition
@@ -152,7 +155,7 @@ const Explore = () => {
           unmountOnExit={true}
           onExited={() => setContentMounted(true)}
         >
-          <Cultura nextPath={nextPath} />
+          <Cultura nextPath={nextPath} disableNext={disableNext} />
         </CSSTransition>
 
         <CSSTransition
@@ -162,7 +165,7 @@ const Explore = () => {
           unmountOnExit={true}
           onExited={() => setContentMounted(true)}
         >
-          <Historia nextPath={nextPath} />
+          <Historia disableNext={disableNext} />
         </CSSTransition>
       </div>
 

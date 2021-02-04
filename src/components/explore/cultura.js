@@ -5,7 +5,7 @@ import Img from "gatsby-image"
 
 import "../../styles/cultura.scss"
 
-const Cultura = ({ nextPath }) => {
+const Cultura = ({ nextPath, disableNext }) => {
   const data = useStaticQuery(graphql`
     query {
       museumImg: file(
@@ -112,9 +112,13 @@ const Cultura = ({ nextPath }) => {
         </div>
       </main>
 
-      <button ref={nextRef} className={"next-page" + checkNext()} onClick={clickNextPath}>
-        next
-      </button>
+      {
+        disableNext ? 
+        null :
+        <button ref={nextRef} className={"next-page" + checkNext()} onClick={clickNextPath}>
+          next
+        </button>
+      }
     </div>
   )
 }
