@@ -42,7 +42,7 @@ Travel Seville is entirely built on the front end using Gatsby, which is based o
 ![daytrip](https://user-images.githubusercontent.com/19617238/106971518-f2bd7f00-6703-11eb-8604-4bf022facbab.gif)
 
 
-* **Pathfinding Algorithm** - a custom pathfinding was done using a genetic algorithm in order to solve for a cyclic Traveling Salesman problem. Included in this genetic algorithm was the use of *simulated annealing* in order to help boost the probablity of finding the most efficient path 
+* **Pathfinding Algorithm** - finding the most efficient path across the selected waypoints was done using a genetic algorithm. Included in this genetic algorithm was the use of *simulated annealing* in order to help boost the probablity of finding the most efficient path 
 
   ``` javascript
   const geneticTSP = points => {
