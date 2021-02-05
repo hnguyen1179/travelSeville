@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { gsap, Power2 } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -6,9 +6,6 @@ import { Transition } from "react-transition-group"
 
 // Style
 import "../../styles/instructions.scss"
-
-// Registering GSAP Plugins
-gsap.registerPlugin(ScrollTrigger)
 
 const SectionThree = ({ currentSection, chevronType }) => {
   // States
@@ -27,25 +24,30 @@ const SectionThree = ({ currentSection, chevronType }) => {
     delay: delay || 0,
   })
 
-  gsap.to(".section-three .section-title", {
-    scrollTrigger: ".section-three",
-    height: "100%",
-    duration: 1.8,
-    ease: Power2.easeInOut
-  })
-
-  gsap.to("#how-to-image-cover", {
-    scrollTrigger: "#how-to-image-cover",
-    width: "0%",
-    duration: 0.8,
-    ease: Power2.easeInOut,
-  })
-
-  const stepOneTL = gsap.timeline({scrollTrigger: ".one-number"})
-
-  stepOneTL.to("#one-number", slideAnimation(0.8), "+=1")
-           .to("#one-main", slideAnimation(0.8, -0.4))
-           .to("#one-sub-one", slideAnimation(0.4, -0.4))
+  useEffect(() => {
+    // Registering GSAP Plugins
+    gsap.registerPlugin(ScrollTrigger)
+  
+    gsap.to(".section-three .section-title", {
+      scrollTrigger: ".section-three",
+      height: "100%",
+      duration: 1.8,
+      ease: Power2.easeInOut
+    })
+  
+    gsap.to("#how-to-image-cover", {
+      scrollTrigger: "#how-to-image-cover",
+      width: "0%",
+      duration: 0.8,
+      ease: Power2.easeInOut,
+    })
+  
+    const stepOneTL = gsap.timeline({scrollTrigger: ".one-number"})
+  
+    stepOneTL.to("#one-number", slideAnimation(0.8), "+=1")
+             .to("#one-main", slideAnimation(0.8, -0.4))
+             .to("#one-sub-one", slideAnimation(0.4, -0.4))
+  }, [])
 
   return (
     <>

@@ -42,12 +42,18 @@ const Arquitectura = ({ nextPath, disableNext }) => {
     setas: false,
   }
 
+  let sessionObject = false;
+  if (typeof window !== 'undefined') {
+    sessionObject = sessionStorage.getItem('arquitectura')
+  }
+
   const [images, setImages] = useState(() => (
-      sessionStorage.getItem('arquitectura') ?
-      JSON.parse(sessionStorage.getItem('arquitectura')) :
+      sessionObject ?
+      JSON.parse(sessionObject) :
       initialImages
     )
   )
+  
   const nextRef = useRef(null)
 
   useEffect(() => {

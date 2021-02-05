@@ -10,8 +10,8 @@ import { gsap } from "gsap"
 // Pages Rendered
 import Barrios from "../components/explore/barrios"
 import Arquitectura from "../components/explore/arquitectura"
-import Cultura from "../components/explore/Cultura"
-import Historia from "../components/explore/Historia"
+import Cultura from "../components/explore/cultura"
+import Historia from "../components/explore/historia"
 
 // Stylesheets Used
 import "../styles/barrios.scss"
@@ -24,8 +24,8 @@ const Explore = () => {
   const [currentTab, setCurrentTab] = useState(0)
   const [pathIndex, setPathIndex] = useState(3)
   const [activated, setActivated] = useState(false)
-  const [width, setWidth] = useState(window.innerWidth)
-  const [height, setHeight] = useState(window.innerHeight)
+  const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0)
+  const [height, setHeight] = useState(typeof window !== 'undefined' ? window.innerHeight : 0)
   const [contentMounted, setContentMounted] = useState(true)
   const [disableNext, setDisableNext] = useState(false)
 

@@ -35,9 +35,14 @@ const Historia = ({ disableNext }) => {
     alcazar: false,
   }
 
+  let sessionObject = false;
+  if (typeof window !== 'undefined') {
+    sessionObject = sessionStorage.getItem('historia')
+  }
+
   const [images, setImages] = useState(() => (
-    sessionStorage.getItem('historia') ?
-      JSON.parse(sessionStorage.getItem('historia')) :
+      sessionObject ?
+      JSON.parse(sessionObject) :
       initialImages
     )
   )

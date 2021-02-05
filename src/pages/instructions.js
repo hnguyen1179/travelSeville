@@ -13,8 +13,6 @@ import useEventListener from "../utils/useEventListener"
 import "../styles/instructions.scss"
 
 const Instructions = () => {
-  const titleUnderline = CSSRulePlugin.getRule("#seville:after")
-
   // States
   const [currentSection, setCurrentSection] = useState("one")
 
@@ -23,25 +21,41 @@ const Instructions = () => {
   const secondSectionRef = useRef(null)
 
   const height = () => {
-    return (window.innerHeight * 2) + secondSectionRef.current.getBoundingClientRect().height
+    if (typeof window !== 'undefined') {
+      return (window.innerHeight * 2) + secondSectionRef.current.getBoundingClientRect().height
+    } else {
+      return 0
+    }
+  }
+
+  let windowScrollY;
+  let windowInnerHeight;
+  if (typeof window != 'undefined') {
+    windowScrollY = window.scrollY;
+    windowInnerHeight = window.innerHeight;
+  } else {
+    windowScrollY = 0;
+    windowInnerHeight = 0;
   }
 
   // For Chevron purposes
-  useEventListener(window, "scroll", () => {
+  useEventListener(typeof window !== 'undefined' ? window : '', "scroll", () => {
     const firstBreak = height() * 0.0074
-    const secondBreak = height() - (window.innerHeight * 2) + (window.innerHeight * 0.03)
+    const secondBreak = height() - (windowInnerHeight * 2) + (windowInnerHeight * 0.03)
 
     if (thirdSectionRef.current.getBoundingClientRect().top <= 10) {
       setCurrentSection("three")
-    } else if (window.scrollY < firstBreak || window.scrollY > secondBreak) {
+    } else if (windowScrollY < firstBreak || windowScrollY > secondBreak) {
       setCurrentSection("one")
-    } else if (window.scrollY >= firstBreak && window.scrollY <= secondBreak) {
+    } else if (windowScrollY >= firstBreak && windowScrollY <= secondBreak) {
       setCurrentSection("two")
     }
   })
 
   // Animations for first panel
   useEffect(() => {    
+    let titleUnderline = CSSRulePlugin.getRule("#seville:after")
+    
     if (sessionStorage.getItem("reload")) {
       const tl = new TimelineLite()
       
@@ -56,7 +70,7 @@ const Instructions = () => {
       window.location.reload()
     }
 
-  }, [titleUnderline])
+  }, [])
 
   const chevronType = () => {
     switch (currentSection) {

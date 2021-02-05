@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { gsap, Power2 } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -8,8 +8,6 @@ import SevilleSpainMap from "./SevilleSpainMap"
 // Style
 import "../../styles/instructions.scss"
 
-// Registering GSAP Plugins
-gsap.registerPlugin(ScrollTrigger)
 
 const SectionTwo = () => {
   // Utility Functions
@@ -27,66 +25,70 @@ const SectionTwo = () => {
     delay: delay || 0,
   })
 
-  // ANIMATIONS
+  useEffect(() => {
+    // ANIMATIONS
+    // Registering GSAP Plugins
+    gsap.registerPlugin(ScrollTrigger)
+    
+    // Background Headline Animation
+    gsap.to("#background", {
+      scrollTrigger: "#background",
+      height: "100%",
+      duration: 1.2,
+      ease: Power2.easeInOut
+    })
 
-  // Background Headline Animation
-  gsap.to("#background", {
-    scrollTrigger: "#background",
-    height: "100%",
-    duration: 1.2,
-    ease: Power2.easeInOut
-  })
+    const startTime = 0.8
+    const figureDuration = 0.6
+    const coverDuration = 0.8
 
-  const startTime = 0.8
-  const figureDuration = 0.6
-  const coverDuration = 0.8
-
-  // Block One Animation
-  const blockOneTL = gsap.timeline({scrollTrigger: ".block-one"})
-  blockOneTL.to(".block-one figure", { width: "95%", duration: figureDuration, ease: Power2.easeInOut })
-            .addLabel("start", startTime)
-            .to("#block-one-image-cover", slideAnimation(coverDuration), "start")
-            .from(".block-one-image img", imageZoomAnimation(1.2, -1.4))
-            .to("#block-one-aside-cover", slideAnimation(coverDuration), "start")
-
-  // Block Two Animation
-  gsap.to("#seville-satellite-image-cover", {
-    scrollTrigger: "#seville-satellite-image-cover",
-    width: "0%",
-    duration: 1.2,
-    ease: Power2.easeInOut,
-  })
-
-  // Block Three Animation
-  const blockThreeTL = gsap.timeline({scrollTrigger: ".block-three"})
-  blockThreeTL.to(".block-three figure", { width: "90%", duration: figureDuration, ease: Power2.easeInOut })
+    // Block One Animation
+    const blockOneTL = gsap.timeline({scrollTrigger: ".block-one"})
+    blockOneTL.to(".block-one figure", { width: "95%", duration: figureDuration, ease: Power2.easeInOut })
               .addLabel("start", startTime)
-              .to("#block-three-image-cover", slideAnimation(coverDuration), "start")
-              .to("#block-three-aside-cover", slideAnimation(coverDuration), "start")
+              .to("#block-one-image-cover", slideAnimation(coverDuration), "start")
+              .from(".block-one-image img", imageZoomAnimation(1.2, -1.4))
+              .to("#block-one-aside-cover", slideAnimation(coverDuration), "start")
 
-  // Block Four Animation
-  const blockFourTL = gsap.timeline({scrollTrigger: ".block-four"})
-  blockFourTL.to(".block-four figure", { width: "85%", duration: figureDuration, ease: Power2.easeInOut })
-             .addLabel("start", startTime)
-             .to("#block-four-image-cover", slideAnimation(coverDuration), "start")
-             .to(".block-four-image img", imageZoomAnimation(1.2, -1.4))
-             .to("#block-four-aside-cover", slideAnimation(coverDuration), "start")
+    // Block Two Animation
+    gsap.to("#seville-satellite-image-cover", {
+      scrollTrigger: "#seville-satellite-image-cover",
+      width: "0%",
+      duration: 1.2,
+      ease: Power2.easeInOut,
+    })
 
-  // Block Five Animation
-  const blockFiveTL = gsap.timeline({scrollTrigger: ".block-five"})
-  blockFiveTL.to(".block-five figure", { width: "90%", duration: figureDuration, ease: Power2.easeInOut })
-             .addLabel("start", startTime)
-             .to("#block-five-image-cover", slideAnimation(coverDuration), "start")
-             .to(".block-five-image img", imageZoomAnimation(1.2, -1.4))
-             .to("#block-five-aside-cover", slideAnimation(coverDuration), "start")
+    // Block Three Animation
+    const blockThreeTL = gsap.timeline({scrollTrigger: ".block-three"})
+    blockThreeTL.to(".block-three figure", { width: "90%", duration: figureDuration, ease: Power2.easeInOut })
+                .addLabel("start", startTime)
+                .to("#block-three-image-cover", slideAnimation(coverDuration), "start")
+                .to("#block-three-aside-cover", slideAnimation(coverDuration), "start")
 
-  // Block Six Animation
-  const blockSixTL = gsap.timeline({scrollTrigger: ".block-six"})
-  blockSixTL.to(".block-six figure", { width: "100%", duration: figureDuration, ease: Power2.easeInOut })
-            .addLabel("start", startTime)
-            .to("#block-six-image-cover", slideAnimation(coverDuration), "start")
-            .to(".block-six-image img", imageZoomAnimation(1.2, -1.4))
-            .to("#block-six-aside-cover", slideAnimation(coverDuration), "start")
+    // Block Four Animation
+    const blockFourTL = gsap.timeline({scrollTrigger: ".block-four"})
+    blockFourTL.to(".block-four figure", { width: "85%", duration: figureDuration, ease: Power2.easeInOut })
+              .addLabel("start", startTime)
+              .to("#block-four-image-cover", slideAnimation(coverDuration), "start")
+              .to(".block-four-image img", imageZoomAnimation(1.2, -1.4))
+              .to("#block-four-aside-cover", slideAnimation(coverDuration), "start")
+
+    // Block Five Animation
+    const blockFiveTL = gsap.timeline({scrollTrigger: ".block-five"})
+    blockFiveTL.to(".block-five figure", { width: "90%", duration: figureDuration, ease: Power2.easeInOut })
+              .addLabel("start", startTime)
+              .to("#block-five-image-cover", slideAnimation(coverDuration), "start")
+              .to(".block-five-image img", imageZoomAnimation(1.2, -1.4))
+              .to("#block-five-aside-cover", slideAnimation(coverDuration), "start")
+
+    // Block Six Animation
+    const blockSixTL = gsap.timeline({scrollTrigger: ".block-six"})
+    blockSixTL.to(".block-six figure", { width: "100%", duration: figureDuration, ease: Power2.easeInOut })
+              .addLabel("start", startTime)
+              .to("#block-six-image-cover", slideAnimation(coverDuration), "start")
+              .to(".block-six-image img", imageZoomAnimation(1.2, -1.4))
+              .to("#block-six-aside-cover", slideAnimation(coverDuration), "start")
+  }, [])
 
   return (
     <>

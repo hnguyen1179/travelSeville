@@ -54,10 +54,16 @@ const Barrios = ({ nextPath, disableNext }) => {
     macarena: false,
   }
 
-  const [images, setImages] = useState(() =>
-    sessionStorage.getItem("barrios")
-      ? JSON.parse(sessionStorage.getItem("barrios"))
-      : initialImages
+  let sessionObject = false;
+  if (typeof window !== 'undefined') {
+    sessionObject = sessionStorage.getItem('barrios')
+  }
+
+  const [images, setImages] = useState(() => (
+      sessionObject ?
+      JSON.parse(sessionObject) :
+      initialImages
+    )
   )
 
   const nextRef = useRef(null)

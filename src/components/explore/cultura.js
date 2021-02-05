@@ -34,9 +34,14 @@ const Cultura = ({ nextPath, disableNext }) => {
     museumFineArts: false,
   }
 
+  let sessionObject = false;
+  if (typeof window !== 'undefined') {
+    sessionObject = sessionStorage.getItem('cultura')
+  }
+
   const [images, setImages] = useState(() => (
-      sessionStorage.getItem('cultura') ?
-      JSON.parse(sessionStorage.getItem('cultura')) :
+      sessionObject ?
+      JSON.parse(sessionObject) :
       initialImages
     )
   )
