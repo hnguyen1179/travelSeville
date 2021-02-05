@@ -56,20 +56,14 @@ const Instructions = () => {
   useEffect(() => {    
     let titleUnderline = CSSRulePlugin.getRule("#seville:after")
     
-    if (sessionStorage.getItem("reload")) {
-      const tl = new TimelineLite()
-      
-      tl
-        .delay(0.5)
-        .from(".section-one > .content div", { height: 0, stagger: 0.3, duration: 0.8 })
-        .from(titleUnderline, { width: "0%" }, "-=0.3")
-        .to(".chevron", { opacity: 1, duration: 0.7 }, "-=0.3")
-        .to("#main", { className: "" }, "-=0.2")
-    } else {
-      sessionStorage.setItem("reload", "reloaded")
-      window.location.reload()
-    }
-
+    const tl = new TimelineLite()
+    
+    tl
+      .delay(0.5)
+      .from(".section-one > .content div", { height: 0, stagger: 0.3, duration: 0.8 })
+      .from(titleUnderline, { width: "0%" }, "-=0.3")
+      .to(".chevron", { opacity: 1, duration: 0.7 }, "-=0.3")
+      .to("#main", { className: "" }, "-=0.2")
   }, [])
 
   const chevronType = () => {
