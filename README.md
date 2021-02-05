@@ -46,60 +46,60 @@ Travel Seville is entirely built on the front end using Gatsby, which is based o
 
   ``` javascript
   const geneticTSP = points => {
-  const numberOfGenerations = 1000
-  const sizeOfPopulation = 500
-  const generations = []
-  const order = []
-  const mutationRateMin = 0.125
-  const coolingFactor = 0.5
+    const numberOfGenerations = 1000
+    const sizeOfPopulation = 500
+    const generations = []
+    const order = []
+    const mutationRateMin = 0.125
+    const coolingFactor = 0.5
 
-  let currentGeneration = 0
-  let mutationRate = 100
-  let bestConfig
-  let bestFitness = -Infinity
+    let currentGeneration = 0
+    let mutationRate = 100
+    let bestConfig
+    let bestFitness = -Infinity
 
-  // Creating the original orders array
-  for (let i = 0; i < points.length; i++) order[i] = i
+    // Creating the original orders array
+    for (let i = 0; i < points.length; i++) order[i] = i
 
-  // Shuffling the order array and creating a Configuration object with unnormalized fitness scores
-  for (let i = 0; i < sizeOfPopulation; i++) {
-    const shuffledOrder = shuffle(order.slice())
-    generations.push(new Configuration(points, shuffledOrder))
-  }
-
-  // Normalizing the fitness scores of each generation
-  normalizeFitness(generations)
-
-  // Populate new generations based on the fitness probabilites of the previous generations,
-  // mutating them and crossing them over before assigning to a new generations
-  while (currentGeneration < numberOfGenerations) {
-    for (let i = 0; i < generations.length; i++) {
-      const randomConfigurationOne = pickOne(generations)
-      const randomConfigurationTwo = pickOne(generations)
-
-      const randomConfiguration = crossOver(
-        points,
-        randomConfigurationOne,
-        randomConfigurationTwo
-      )
-      mutate(randomConfiguration, mutationRate <= mutationRateMin ? mutationRateMin : mutationRate)
-      generations[i] = randomConfiguration
+    // Shuffling the order array and creating a Configuration object with unnormalized fitness scores
+    for (let i = 0; i < sizeOfPopulation; i++) {
+      const shuffledOrder = shuffle(order.slice())
+      generations.push(new Configuration(points, shuffledOrder))
     }
 
+    // Normalizing the fitness scores of each generation
     normalizeFitness(generations)
 
-    for (let i = 0; i < generations.length; i++) {
-      if (bestFitness < generations[i].fitness) {
-        bestFitness = generations[i].fitness
-        bestConfig = generations[i]
-      }
-    }
-    currentGeneration++
-    mutationRate = 100 * (coolingFactor ** currentGeneration)
-  }
+    // Populate new generations based on the fitness probabilites of the previous generations,
+    // mutating them and crossing them over before assigning to a new generations
+    while (currentGeneration < numberOfGenerations) {
+      for (let i = 0; i < generations.length; i++) {
+        const randomConfigurationOne = pickOne(generations)
+        const randomConfigurationTwo = pickOne(generations)
 
-  return bestConfig
-}
+        const randomConfiguration = crossOver(
+          points,
+          randomConfigurationOne,
+          randomConfigurationTwo
+        )
+        mutate(randomConfiguration, mutationRate <= mutationRateMin ? mutationRateMin : mutationRate)
+        generations[i] = randomConfiguration
+      }
+
+      normalizeFitness(generations)
+
+      for (let i = 0; i < generations.length; i++) {
+        if (bestFitness < generations[i].fitness) {
+          bestFitness = generations[i].fitness
+          bestConfig = generations[i]
+        }
+      }
+      currentGeneration++
+      mutationRate = 100 * (coolingFactor ** currentGeneration)
+    }
+
+    return bestConfig
+  }
   ```
 
 ## Future Direction
