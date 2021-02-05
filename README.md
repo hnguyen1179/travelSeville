@@ -5,7 +5,7 @@
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Technologies](#technologies)
-3. [Features](#features)
+3. [Highlights](#highlights)
 4. [Future Direction](#future-direction)
 
 ## Introduction
