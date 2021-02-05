@@ -71,7 +71,7 @@ Travel Seville is entirely built on the front end using Gatsby, which is based o
     normalizeFitness(generations)
 
     // Populate new generations based on the fitness probabilites of the previous generations,
-    // mutating them and crossing them over before assigning to a new generations
+    // mutating them and crossing them over before assigning to a new generation
     while (currentGeneration < numberOfGenerations) {
       for (let i = 0; i < generations.length; i++) {
         const randomConfigurationOne = pickOne(generations)
