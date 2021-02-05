@@ -52,7 +52,7 @@ const DirectionsMap = ({ cardRefs, currentCard, setCurrentCard, origin, destinat
   const [question, setQuestion] = useState(false)
 
   const { isLoaded, LoadError } = useLoadScript({
-    googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: process.env.GATSBY_GOOGLE_MAPS_API_KEY,
     libraries: libraries,
   })
 
