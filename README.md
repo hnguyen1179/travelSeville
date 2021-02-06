@@ -1,11 +1,11 @@
 # Travel Seville
-[Live link](https://hnguyen1179.github.io/travelSeville/)</br></br>
+[Live link](https://travel-seville.netlify.app/)</br></br>
 ![Travel Seville landing page](https://user-images.githubusercontent.com/19617238/106968359-7e7fdd00-66fd-11eb-8d98-acf55ca00b3e.gif)
 
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Technologies](#technologies)
-3. [Features](#features)
+3. [Highlights](#highlights)
 4. [Future Direction](#future-direction)
 
 ## Introduction
