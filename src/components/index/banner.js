@@ -45,7 +45,7 @@ const Banner = () => {
             </ul>
 
             <div className="banner-body">
-              Sevilla en un dia, or a day in Seville, is a guide to help you
+              Sevilla en un dia, or Seville in a day, is a guide to help you
               plan out a single day in <br /> Seville, Spain. <br />
               From this, I hope you will get <br />a newfound appreciation for
               Spanish culture and some <br />
