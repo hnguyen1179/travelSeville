@@ -82,8 +82,12 @@ Travel Seville is entirely built on the front end using Gatsby, which is based o
           randomConfigurationOne,
           randomConfigurationTwo
         )
-        mutate(randomConfiguration, mutationRate <= mutationRateMin ? mutationRateMin : mutationRate)
-        generations[i] = randomConfiguration
+        
+        const nextMutationRate = mutationRate <= mutationRateMin 
+          ? mutationRateMin 
+          : mutationRate 
+          
+        generations[i] = mutate(randomConfiguration, nextMutationRate);
       }
 
       normalizeFitness(generations)
