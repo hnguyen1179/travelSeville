@@ -92,7 +92,7 @@ const Explore = () => {
       }
 
       /*
-       * This turns the svg into a static path after the animation is ran;
+       * Turns the svg into a static path after the animation is ran;
        * static path allows for the svg to be resized on window resizing. In 
        * addition, enables use of all buttons after animation is finished 
        */ 
@@ -106,6 +106,10 @@ const Explore = () => {
     }
   }
 
+  /* 
+   * Creates the animation path for the SVG to morph from the last tab to 
+   * the next tab. Computed for either a 'tab' or 'next' button click
+   */
   const interpolator = interpolate(
     PATHS[lastTab],
     PATHS[currentTab] || PATHS[0],
