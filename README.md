@@ -22,12 +22,12 @@ Travel Seville is entirely built on the front end using Gatsby, which is based o
 
 
 ## Highlights
-* **Smooth Animations** - animations were all done with either CSS transitions and keyframes ... 
+* **Smooth Animations** - animations were all done with the help of the GSAP library, CSS transitions, or keyframes ... 
 
 ![introduction](https://user-images.githubusercontent.com/19617238/106970555-fc45e780-6701-11eb-807b-3e20a2d1489c.gif)
 </br>
 </br>
-... or with the help of the GSAP library for the SVG animations.
+... react-transition-group library was used for the SVG animations
 </br>
 </br>
 ![explore](https://user-images.githubusercontent.com/19617238/106970542-f2bc7f80-6701-11eb-9931-2415d58de4dd.gif)
@@ -82,8 +82,12 @@ Travel Seville is entirely built on the front end using Gatsby, which is based o
           randomConfigurationOne,
           randomConfigurationTwo
         )
-        mutate(randomConfiguration, mutationRate <= mutationRateMin ? mutationRateMin : mutationRate)
-        generations[i] = randomConfiguration
+        
+        const nextMutationRate = mutationRate <= mutationRateMin 
+          ? mutationRateMin 
+          : mutationRate 
+          
+        generations[i] = mutate(randomConfiguration, nextMutationRate);
       }
 
       normalizeFitness(generations)
